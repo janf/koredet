@@ -10,5 +10,15 @@
   <%= @item.description %>
 </p>
 
+
+
+<% @item.item_type.fields.each do |field| %>
+    <p>
+        <b>	<%=  "#{field.name}: " %></b>
+    	<%= "#{@item.properties[field.name]}" %>
+	</p>
+<% end %>
+  
+
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>
