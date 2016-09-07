@@ -1,0 +1,16 @@
+<%= image_tag "home.jpg", size: "120x80" %>
+<h1><b>Welcome to your home manager</b></h1>
+ <% if false %>
+	 <li><%= link_to "Item Classes (" + @item_class_count.to_s + ")", :item_classes    %></li>
+	 <li><%= link_to "Item Types (" + @item_type_count.to_s + ")", :item_types    %></li>
+	 <li><%= link_to "Items ("  + @item_count.to_s + ")", :items    %></li>
+	 <li>Individual items</li>
+	 <li><%= link_to "Location Classes (" + @location_class_count.to_s + ")", :location_classes    %></li>
+	     <li><%= link_to "Location Types (" + @location_type_count.to_s + ")", :location_types    %></li> " 
+	 <li><%= link_to "Locations ("  + @location_count.to_s + ")", :locations    %></li>
+	 <li><%= link_to "Inventories ("  + @inventory_count.to_s + ")", :inventories    %></li>
+ <% end %>
+ <p></p>
+<p></p>
+
+

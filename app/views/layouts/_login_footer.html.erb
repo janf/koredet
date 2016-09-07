@@ -1,0 +1,19 @@
+<footer class="navbar navbar-fixed-bottom navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+        <nav>
+        <ul class="nav pull-left">
+        <% if user_signed_in? %>
+            Logged in as <strong><%= current_user.email %></strong>.
+            <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+            <%= link_to "Logout", destroy_user_session_path,  method: :delete, :class => 'navbar-link'  %>
+        <% else %>
+            <%= link_to "Login", new_user_session_path, data: { confirm: "Are you sure?" }, :class => 'navbar-link'  %> |
+            <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %>  
+        <% end %>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>
+
