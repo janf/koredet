@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160905080256) do
+ActiveRecord::Schema.define(version: 20160908212641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "inventories", force: :cascade do |t|
+    t.integer  "qty"
+    t.integer  "location_id"
+    t.integer  "item_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["item_id"], name: "index_inventories_on_item_id", using: :btree
+    t.index ["location_id"], name: "index_inventories_on_location_id", using: :btree
+  end
 
   create_table "item_fields", force: :cascade do |t|
     t.string   "name"
@@ -40,6 +50,37 @@ ActiveRecord::Schema.define(version: 20160905080256) do
     t.text     "properties"
   end
 
+  create_table "locations", force: :cascade do |t|
+    t.string   "name"
+    t.string   "location_type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "ancestry"
+  end
+
+  create_table "transaction_types", force: :cascade do |t|
+    t.string   "description"
+    t.integer  "from_location_id"
+    t.integer  "to_location_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "name"
+    t.index ["from_location_id"], name: "index_transaction_types_on_from_location_id", using: :btree
+    t.index ["to_location_id"], name: "index_transaction_types_on_to_location_id", using: :btree
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.integer  "from_locations_id"
+    t.integer  "to_locations_id"
+    t.integer  "items_id"
+    t.integer  "qty"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["from_locations_id"], name: "index_transactions_on_from_locations_id", using: :btree
+    t.index ["items_id"], name: "index_transactions_on_items_id", using: :btree
+    t.index ["to_locations_id"], name: "index_transactions_on_to_locations_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -57,5 +98,7 @@ ActiveRecord::Schema.define(version: 20160905080256) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "inventories", "items"
+  add_foreign_key "inventories", "locations"
   add_foreign_key "item_fields", "item_types"
 end
