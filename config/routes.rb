@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :cart_items
+  resources :carts do
+    member do
+      put :process_cart
+    end
+  end 
   resources :inventories
   resources :locations
   resources :items

@@ -1,5 +1,7 @@
 class Item < ApplicationRecord
 	belongs_to :item_type
+	has_many :inventories
+
 	serialize :properties, Hash
 
 	validate :validate_properties

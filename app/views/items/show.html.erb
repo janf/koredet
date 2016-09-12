@@ -1,8 +1,15 @@
 <p id="notice"><%= notice %></p>
 
+<h2>Item</h2>
+
 <p>
   <strong>Name:</strong>
   <%= @item.name %>
+</p>
+
+<p>
+  <strong>Item type:</strong>
+  <%= @item.item_type.name %>
 </p>
 
 <p>
@@ -18,7 +25,29 @@
     	<%= "#{@item.properties[field.name]}" %>
 	</p>
 <% end %>
-  
+
+
+<table  class="table table-striped" style="width: auto;">
+  <thead>
+    <tr>
+      <th>Location name</th>
+      <th>Qty</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @item.inventories.each do |inv| %>
+      <% if inv.location.location_type == "Physical" %> 
+	      <tr>
+	        <td><%= link_to inv.location.name, location_path(inv.location) %></td>
+	        <td><%= inv.qty %></td>
+	      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+
 
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>

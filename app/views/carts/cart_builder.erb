@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>From location:</strong>
+  <%= @cart.from_location %>
+</p>
+
+<p>
+  <strong>To location:</strong>
+  <%= @cart.to_location %>
+</p>
+
+<%= link_to 'Edit', edit_cart_path(@cart) %> |
+<%= link_to 'Back', carts_path %>

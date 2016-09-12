@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>From location:</strong>
+  <%= @cart.from_location.name %>
+</p>
+
+<p>
+  <strong>To location:</strong>
+  <%= @cart.to_location.name %>
+</p>
+
+
+<table  class="table table-striped" style="width: auto;">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Qty</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cart.cart_items.each do |cart_item| %>
+      <tr>
+        <td><%= link_to cart_item.item.name, item_path(cart_item.item) %></td>
+        <td><%= cart_item.qty %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<% if false %>
+	<%= link_to 'Edit', edit_cart_path(@cart) %> 
+<% end %>
+
+<% if @cart.process_status != 'processed' %>
+  <%= link_to 'Perform transaction', process_cart_cart_path(@cart), method: :put, class: "btn btn-primary",:style=>'color:#FFFFFF;' %> 
+<% else %>
+  <b>Movements sucessully processed, inventories updated</b>
+  <br>
+  <%= link_to 'Main page', dashboard_index_path,  class: "btn btn-primary",:style=>'color:#FFFFFF;' %> 
+<% end %> 
+
+<%= link_to 'Back', carts_path,  class: "btn btn-primary",:style=>'color:#FFFFFF;' %> 
