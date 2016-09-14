@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def index
      #@item_type_count = ItemType.count
@@ -11,5 +11,9 @@ class DashboardController < ApplicationController
      #@inventory_count = Inventory.count
      @transaction_types = TransactionType.all
   end
+
+  def search
+    @items = Item.text_search(params[:search_text])
+  end  
 
 end

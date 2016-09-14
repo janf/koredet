@@ -6,7 +6,13 @@ class Item < ApplicationRecord
 
 	validate :validate_properties
 
-
+	def self.text_search(query)
+  		if query.present?
+    		where("name ilike :q or description ilike :q", q: "%#{query}%")
+  		else
+    		all
+  		end
+	end
 
 
 	def validate_properties

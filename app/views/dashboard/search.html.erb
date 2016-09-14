@@ -1,0 +1,40 @@
+
+<h1><b>Search results</b></h1>
+<table  style="width: auto; height: auto">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+     </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <b>
+        <td><%= link_to item.name, item_path(item) %></td>
+        <td><%= item.description %></td>
+        <b>
+        <table  style="width: auto; height: auto">
+		
+		  <tbody>
+		    <% item.inventories.each do |inventory| %>
+		      <% if inventory.location.location_type == "Physical" %>
+			      <tr>
+			        <td> -> </td>
+			        <td><%= link_to inventory.location.name + ": " , location_path(inventory.location) %></td>
+			        <td><%= inventory.qty %></td>
+			      </tr>
+			     <% end %> 	
+		    <% end %>
+		  </tbody>
+		</table>
+		<br>
+        <td>  
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<p></p>
+
+
