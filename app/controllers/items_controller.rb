@@ -1,4 +1,7 @@
 class ItemsController < ApplicationController
+
+  autocomplete :item, :name, :full => true
+
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   # GET /items

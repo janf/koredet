@@ -31,11 +31,11 @@
 
 
 
-<% if false %>
-	<%= link_to 'Edit', edit_cart_path(@cart) %> 
-<% end %>
+
 
 <% if @cart.process_status != 'processed' %>
+  <%= link_to 'Edit', edit_cart_path(@cart) %> 
+  <br>
   <%= link_to 'Perform transaction', process_cart_cart_path(@cart), method: :put, class: "btn btn-primary",:style=>'color:#FFFFFF;' %> 
 <% else %>
   <b>Movements sucessully processed, inventories updated</b>

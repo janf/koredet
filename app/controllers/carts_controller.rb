@@ -1,6 +1,8 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
 
+   autocomplete :item, :name, :full => true
+
   # GET /carts
   # GET /carts.json
   def index
@@ -23,6 +25,7 @@ class CartsController < ApplicationController
 
   # GET /carts/1/edit
   def edit
+    @cart = Cart.find_by_id(params[:id])
   end
 
   # POST /carts
@@ -52,10 +55,11 @@ class CartsController < ApplicationController
     end  
 
     @cart.process_status = "processed"
-    @cart.save
-
-    render 'show'
-
+    if @cart.save 
+      render :show
+    else
+      render :edit
+    end    
   end 
 
   # PATCH/PUT /carts/1

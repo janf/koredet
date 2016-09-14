@@ -2,3 +2,13 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+	
+jQuery ->
+$("form").bind("keypress", function (e) {
+	alert('Pressed key')
+    if (e.keyCode == 13) {
+        $("#btnSearch").attr('value');
+        //add more buttons here
+        return false;
+    }
+});

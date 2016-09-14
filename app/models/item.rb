@@ -6,6 +6,9 @@ class Item < ApplicationRecord
 
 	validate :validate_properties
 
+
+
+
 	def validate_properties
 		item_type.fields.each do |field|
 			if field.required? && properties[field.name].blank?

@@ -7,8 +7,15 @@ class CartItem < ApplicationRecord
   	item.try(:name)
   end
 
-  def category_name=(name)
-  	self.item = Item.find_or_create_by(name: name) if name.present?
+  def item_name=(name)
+  	self.item = Item.find_by(name: name) if name.present?
+  	if !self.item
+		newitem = Item.new
+		newitem.name = name
+		newitem.item_type_id = 1
+		newitem.save
+		self.item = newitem
+	end	
   end
 
 end

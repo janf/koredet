@@ -1,6 +1,5 @@
-
 <fieldset>
-  <%= f.collection_select(:item_id, Item.all.order(:name), :id, :name) %>
+  <%= f.autocomplete_field :item_name, autocomplete_item_name_carts_path, :autofocus => true  %>
   <%= f.text_field :qty %> 
   <%= f.hidden_field :_destroy %>
   <%= link_to "remove", '#', class: "remove_fields" %>

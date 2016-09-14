@@ -4,10 +4,11 @@ Rails.application.routes.draw do
     member do
       put :process_cart
     end
+    get :autocomplete_item_name, :on => :collection
   end 
   resources :inventories
   resources :locations
-  resources :items
+  resources :items 
   resources :item_types
   resources :transactions
   resources :transaction_types

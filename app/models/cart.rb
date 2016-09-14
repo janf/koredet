@@ -3,4 +3,8 @@ class Cart < ApplicationRecord
   belongs_to :to_location, class_name: "Location"
   has_many :cart_items
   accepts_nested_attributes_for :cart_items, allow_destroy: true
+
+  attr_accessor :search_item
+  
+
 end
