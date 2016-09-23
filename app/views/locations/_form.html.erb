@@ -11,7 +11,11 @@
     </div>
   <% end %>
 
-  <%= f.hidden_field :parent_id %>
+  <div class="field">
+    <%= f.label :parent_id %>
+    <%= f.collection_select( :parent_id, Location.order(:name), :id, :name, include_blank: true ) %> 
+  </div>
+
 
   <div class="field">
     <%= f.label :name %>
@@ -22,6 +26,12 @@
     <%= f.label :location_type %>
     <%= f.select :location_type, ['Physical','Flow', 'Plan'] %>
   </div>
+
+  <div class="field">
+    <%= f.label :default_item_type_id %>
+    <%= f.collection_select( :default_item_type_id, ItemType.order(:name), :id, :name, include_blank: true ) %> 
+  </div>
+
 
   <div class="actions">
     <%= f.submit %>

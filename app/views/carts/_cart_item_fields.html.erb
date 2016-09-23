@@ -1,6 +1,7 @@
 <fieldset>
-  <%= f.autocomplete_field :item_name, autocomplete_item_name_carts_path, :autofocus => true  %>
-  <%= f.text_field :qty %> 
+  <%= f.autocomplete_field :item_name, autocomplete_item_name_carts_path, :autofocus => true, size: 30  %>
+  <%= f.text_field :qty, placeholder: "1", size: 5 %> 
+  <%= f.date_field :arrival_date_locfmt, size: 8  %>
   <%= f.hidden_field :_destroy %>
   <%= link_to "remove", '#', class: "remove_fields" %>
  </fieldset>

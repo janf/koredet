@@ -30,9 +30,7 @@
     <%= f.label :description %>
     <%= f.text_field :description %>
   </div>
-
-  <%= f.hidden_field :item_type_id %>
-
+ 
   <%= f.fields_for :properties, OpenStruct.new(@item.properties) do |builder| %>
     <% @item.item_type.fields.each do |field| %>
       <%= render "items/fields/#{field.field_type}", field: field, f: builder %>

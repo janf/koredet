@@ -1,0 +1,9 @@
+<div class="item">
+  <b><%= link_to item.name, item %></b>
+  <div class="details">
+    <%= item.description %>
+    <% if item.item_type %>
+      | Item Type: <%= item.item_type.name %>
+    <% end %>
+  </div>
+</div>

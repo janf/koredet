@@ -14,7 +14,7 @@
         <b>
         <td><%= link_to item.name, item_path(item) %></td>
         <td><%= item.description %></td>
-        <b>
+        </b>
         <table  style="width: auto; height: auto">
 		
 		  <tbody>
@@ -24,6 +24,7 @@
 			        <td> -> </td>
 			        <td><%= link_to inventory.location.name + ": " , location_path(inventory.location) %></td>
 			        <td><%= inventory.qty %></td>
+               <td><%= inventory.arrival_date %></td>
 			      </tr>
 			     <% end %> 	
 		    <% end %>

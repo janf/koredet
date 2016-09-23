@@ -6,8 +6,10 @@ class CartsController < ApplicationController
   # GET /carts
   # GET /carts.json
   def index
-    @carts = Cart.all
+    @carts = Cart.all.order(id: :desc).paginate(:page => params[:page], :per_page => 15)
   end
+      
+
 
   # GET /carts/1
   # GET /carts/1.json
@@ -35,7 +37,9 @@ class CartsController < ApplicationController
 
     respond_to do |format|
       if @cart.save
+        #format.html {redirect_to @cart, process_cart }
         format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
+        #format.html { process_cart, notice: 'Cart was successfully created.' }
         format.json { render :show, status: :created, location: @cart }
       else
         format.html { render :new }
@@ -50,8 +54,8 @@ class CartsController < ApplicationController
 
     #Carts.Transaction do
     @cart.cart_items.each do |ci| 
-      update_inventory(@cart.from_location_id, ci.item_id, -ci.qty)
-      update_inventory(@cart.to_location_id, ci.item_id, ci.qty)
+      update_inventory(@cart.from_location_id, ci.item_id, ci.arrival_date, -ci.qty)
+      update_inventory(@cart.to_location_id, ci.item_id, ci.arrival_date, ci.qty)
     end  
 
     @cart.process_status = "processed"
@@ -67,7 +71,7 @@ class CartsController < ApplicationController
   def update
     respond_to do |format|
       if @cart.update(cart_params)
-        format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
+        format.html { process_cart }
         format.json { render :show, status: :ok, location: @cart }
       else
         format.html { render :edit }
@@ -99,11 +103,12 @@ class CartsController < ApplicationController
 
 
     # Helper method for processing_cart, should be moved to inventory model ?
-    def update_inventory(location_id, item_id, qty)
+    def update_inventory(location_id, item_id, arrival_date, qty)
         logger.debug "location_id: #{location_id}, item_id: #{item_id}"
-        @inventory = Inventory.find_or_initialize_by(location_id: location_id, item_id: item_id)
+        @inventory = Inventory.find_or_initialize_by(location_id: location_id, arrival_date: arrival_date, item_id: item_id)
         @inventory.location_id = location_id
         @inventory.item_id = item_id
+        @inventory.arrival_date = arrival_date
         if @inventory.qty.nil?
           @inventory.qty = qty
         else

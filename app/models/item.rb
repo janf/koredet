@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
 	belongs_to :item_type
-	has_many :inventories
+	has_many :inventories, dependent: :destroy
+	has_many :cart_items, dependent: :destroy
 
 	serialize :properties, Hash
 

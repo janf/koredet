@@ -10,6 +10,7 @@ class InventoriesController < ApplicationController
   # GET /inventories/1
   # GET /inventories/1.json
   def show
+    @inventories = Inventory.find(params[[id]).includes(:inventories, :item).sort(:item.name)
   end
 
   # GET /inventories/new

@@ -1,6 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Items</h1>
+<p><%= link_to "Advanced Search", new_item_search_path %></p>
+
+
+<%= form_tag items_path, method: :get do %>
+  <%= select_tag :item_type_id, options_from_collection_for_select(ItemType.all, :id, :name, params[:item_type_id]) %>
+  <%= submit_tag "Search", name: nil %>
+<% end %>
+<br>
+
+<% if params[:item_type_id].present? %>
+  <%= form_tag new_item_path, method: :get do %>
+    <%= hidden_field_tag :item_type_id, params[:item_type_id] %>
+    <%= submit_tag "New item", name: nil %>
+  <% end %>
+<% end %>  
+
 
 <table  class="table table-striped", style="width: auto; height: auto">
   <thead>
@@ -27,10 +42,7 @@
   </tbody>
 </table>
 
-<br>
+<%= will_paginate @items %>
 
-<%= form_tag new_item_path, method: :get do %>
-  <%= select_tag :item_type_id, options_from_collection_for_select(ItemType.all, :id, :name) %>
-  <%= submit_tag "New item", name: nil %>
-<% end %>
+
 

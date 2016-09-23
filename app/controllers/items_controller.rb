@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = Item.all.order(:name).where(item_type_id: params[:item_type_id]).paginate(:page => params[:page])
   end
 
   # GET /items/1

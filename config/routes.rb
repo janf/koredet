@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :item_types
   resources :transactions
   resources :transaction_types
+  resources :item_searches
   devise_for :users
   resources  :dashboard
   get 'search',  to: 'dashboard#search', as: :search 

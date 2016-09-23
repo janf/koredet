@@ -1,16 +1,26 @@
+require 'will_paginate/array'
+
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
 
   # GET /locations
   # GET /locations.json
   def index
-    @locations = Location.all.order(:name)
+    @locations = Location.all.order(:ancestry).paginate(:page => params[:page])
     #@locations = Location.roots
   end
 
   # GET /locations/1
   # GET /locations/1.json
   def show
+    puts "location-show"
+    @id = params[:id]
+    #@location = Location.find(params[:id])
+    @inventory = Inventory.find_by_sql(['select inventories.*, items.name 
+                                        from inventories, items 
+                                        where (inventories.item_id = items.id) 
+                                        and (inventories.location_id = ?) 
+                                        order by items.name', @id ]).paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /locations/new
@@ -70,6 +80,6 @@ class LocationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def location_params
-      params.require(:location).permit(:name, :location_type, :parent_id)
+      params.require(:location).permit(:name, :location_type, :parent_id, :default_item_type_id)
     end
 end

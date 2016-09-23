@@ -1,5 +1,12 @@
 <p id="notice"><%= notice %></p>
 
+<div id="breadcrumbs">
+  <% @location.ancestors.each do |loc| %>
+    <%= link_to loc.name, loc %> &gt;
+  <% end %>
+</div>
+<br>
+
 <p>
   <strong>Name:</strong>
   <%= @location.name %>
@@ -10,7 +17,44 @@
   <%= @location.location_type %>
 </p>
 
-Vis lagerbeholdning
+<b>Children</b>
+
+<p>
+  <% @location.children.each do |child| %>
+     <%= link_to child.name, child %> 
+  <% end %> 
+  </p>
+<br>
+
+<b>Inventory at location </b>
+
+
+<table  class="table table-striped", style="width: auto; height: auto">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Qty</th>
+      <th>Arrival date</th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+	<% @inventory.each do |inventory| %>
+      <tr data-item-id=<%= "#{inventory.id}"%> class="item", height="10">
+		  <td> <%= inventory.item.name %></td>
+		  <td> <%= inventory.qty.to_s %></td>
+      <td> <%= inventory.arrival_date %></td>
+		<tr>
+	<% end %>	
+  </tbody>
+</table>
+<%= will_paginate @inventory %>
+
+<br>
+
+
+
 <br>
 
 <%= link_to 'Edit', edit_location_path(@location) %> |

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160912040953) do
+ActiveRecord::Schema.define(version: 20160923093329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,9 +18,10 @@ ActiveRecord::Schema.define(version: 20160912040953) do
   create_table "cart_items", force: :cascade do |t|
     t.integer  "item_id"
     t.integer  "qty"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.integer  "cart_id"
+    t.date     "arrival_date"
     t.index ["cart_id"], name: "index_cart_items_on_cart_id", using: :btree
     t.index ["item_id"], name: "index_cart_items_on_item_id", using: :btree
   end
@@ -39,8 +40,9 @@ ActiveRecord::Schema.define(version: 20160912040953) do
     t.integer  "qty"
     t.integer  "location_id"
     t.integer  "item_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.date     "arrival_date"
     t.index ["item_id"], name: "index_inventories_on_item_id", using: :btree
     t.index ["location_id"], name: "index_inventories_on_location_id", using: :btree
   end
@@ -53,6 +55,12 @@ ActiveRecord::Schema.define(version: 20160912040953) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["item_type_id"], name: "index_item_fields_on_item_type_id", using: :btree
+  end
+
+  create_table "item_searches", force: :cascade do |t|
+    t.integer  "item_type_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "item_types", force: :cascade do |t|
@@ -73,9 +81,10 @@ ActiveRecord::Schema.define(version: 20160912040953) do
   create_table "locations", force: :cascade do |t|
     t.string   "name"
     t.string   "location_type"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.string   "ancestry"
+    t.integer  "default_item_type_id"
   end
 
   create_table "transaction_types", force: :cascade do |t|

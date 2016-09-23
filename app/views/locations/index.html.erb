@@ -4,9 +4,11 @@
 
 <table  class="table table-striped", style="width: auto; height: auto">  <thead>
     <tr>
+      <th>Id</th>
       <th>Name</th>
       <th>Location type</th>
-      <th>Ancestry</th>
+      <th>Parent</th>
+      <th>Default Item Type</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -14,9 +16,12 @@
   <tbody>
     <% @locations.each do |location| %>
       <tr>
+        <td><%= location.id %></td>
         <td><%= link_to location.name, location_path(location) %></td>
         <td><%= location.location_type %></td>
-        <td><%= location.ancestry %></td>
+        <td><%= link_to(location.parent.name, location_path(location.parent)) if location.parent%></td>
+        <td><%= location.item_type.name if location.item_type%></td>
+        
         <td>
           <%= link_to 'Edit', edit_location_path(location) %>
           <%= link_to 'Add Child', new_location_path(:parent_id => location) %>
@@ -28,5 +33,7 @@
 </table>
 
 <br>
+<%= will_paginate @locations %>
 
 <%= link_to 'New Location', new_location_path %>
+

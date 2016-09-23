@@ -27,10 +27,13 @@
    <%= f.fields_for :cart_items do |builder| %>
      <%= render 'cart_item_fields', f: builder%>
   <% end %>
-
-  <%= link_to_add_fields "Add Items", f, :cart_items%>   
-
+  <br>
+  <%= link_to_add_fields "Add Items", f, :cart_items %>   
+  <br>
+  <br>
   <div class="actions">
-      <%= f.submit %>
-    </div>
+    <%= f.submit "Execute movement", class: "btn btn-primary",:style=>'color:#FFFFFF;' %>
+  </div>
+
+
 <% end %>
