@@ -15,7 +15,6 @@ class Item < ApplicationRecord
   		end
 	end
 
-
 	def validate_properties
 		item_type.fields.each do |field|
 			if field.required? && properties[field.name].blank?

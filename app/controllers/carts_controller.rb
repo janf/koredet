@@ -37,9 +37,7 @@ class CartsController < ApplicationController
 
     respond_to do |format|
       if @cart.save
-        #format.html {redirect_to @cart, process_cart }
         format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
-        #format.html { process_cart, notice: 'Cart was successfully created.' }
         format.json { render :show, status: :created, location: @cart }
       else
         format.html { render :new }
@@ -69,9 +67,12 @@ class CartsController < ApplicationController
   # PATCH/PUT /carts/1
   # PATCH/PUT /carts/1.json
   def update
+  
+    #Cartverification.new().verify(params)
+
     respond_to do |format|
       if @cart.update(cart_params)
-        format.html { process_cart }
+        format.html { redirect_to @cart, notice: 'Item was successfully updated.' }
         format.json { render :show, status: :ok, location: @cart }
       else
         format.html { render :edit }

@@ -12,7 +12,6 @@
 //
 //
 //= require jquery
-//= require jquery-ui/autocomplete
 //= require jquery-ui/button
 //= require jquery-ui/menu
 //= require jquery_ujs

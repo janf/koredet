@@ -16,6 +16,7 @@
     <tr>
       <th>Item</th>
       <th>Qty</th>
+      <th>Date</th>
     </tr>
   </thead>
 
@@ -24,6 +25,7 @@
       <tr>
         <td><%= link_to cart_item.item.name, item_path(cart_item.item) %></td>
         <td><%= cart_item.qty %></td>
+        <td><%= cart_item.arrival_date %></td>
       </tr>
     <% end %>
   </tbody>

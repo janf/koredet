@@ -1,7 +1,11 @@
 <fieldset>
   <%= f.autocomplete_field :item_name, autocomplete_item_name_carts_path, :autofocus => true, size: 30  %>
-  <%= f.text_field :qty, placeholder: "1", size: 5 %> 
+  <%= f.text_field :qty, placeholder: "1", size: 5, class: "qty" %> 
   <%= f.date_field :arrival_date_locfmt, size: 8  %>
   <%= f.hidden_field :_destroy %>
-  <%= link_to "remove", '#', class: "remove_fields" %>
+    <% if true %>
+	  <%= link_to "+", '#', class: "one_plus btn btn-primary btn-xs" %>
+	  <%= link_to "-", '#', class: "one_minus btn btn-primary btn-xs" %>
+  <% end %>
+  <%= link_to "remove", '#', class: "remove_fields btn btn-primary btn-xs" %>
  </fieldset>

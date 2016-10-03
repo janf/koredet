@@ -1,3 +1,27 @@
 // Place all the styles related to the Carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.add_fields {
+    color: white !important;
+}
+
+.remove_fields   {
+    color: white !important;
+}
+
+.one_plus   {
+    color: white !important;
+}
+
+.one_minus   {
+    color: white !important;
+}
+
+.speech_input_btn   {
+    color: white !important;
+}
+
+
+

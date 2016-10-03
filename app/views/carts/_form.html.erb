@@ -12,27 +12,36 @@
     </div>
   <% end %>
 
-
-
-  <div class="field">
-    <%= f.label :from_location_id %>
-    <%= f.collection_select( :from_location_id, Location.all.order(:name), :id, :name) %>
+  <div class =row>
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :from_location_id %>
+        <%= f.collection_select( :from_location_id, Location.all.order(:name), :id, :name) %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :to_location_id %>
+        <%= f.collection_select( :to_location_id, Location.all.order(:name), :id, :name) %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :to_location_id %>
-    <%= f.collection_select( :to_location_id, Location.all.order(:name), :id, :name) %>
-  </div>
+  <% if false %>
+    <div class="speech">
+      <%= link_to "Speech input", '#', class: "speech_input_btn btn btn-primary btn-sm" %>
+    </div>
+    <br>
+  <% end %>  
 
    <%= f.fields_for :cart_items do |builder| %>
      <%= render 'cart_item_fields', f: builder%>
   <% end %>
-  <br>
   <%= link_to_add_fields "Add Items", f, :cart_items %>   
   <br>
   <br>
   <div class="actions">
-    <%= f.submit "Execute movement", class: "btn btn-primary",:style=>'color:#FFFFFF;' %>
+    <%= f.submit "Submit", class: "btn btn-primary",:style=>'color:#FFFFFF;' %>
   </div>
 
 

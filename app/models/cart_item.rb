@@ -12,10 +12,14 @@ class CartItem < ApplicationRecord
     self.arrival_date = adate
   end  
 
-
   def item_name
   	item.try(:name)
   end
+
+  def get_item_id
+    item_id
+  end
+
 
   def item_name=(name)
   	self.item = Item.find_by(name: name) if name.present?
@@ -30,8 +34,12 @@ class CartItem < ApplicationRecord
 
   private 
     def default_values
-      self.qty = 1
-      self.arrival_date = Date.today
+      if self.qty == nil
+         self.qty = 1
+      end
+      if self.arrival_date == nil   
+        self.arrival_date = Date.today
+      end   
     end  
 
 end

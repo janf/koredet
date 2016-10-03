@@ -61,3 +61,6 @@ bower.json
 
 #Ignore Heroku env files
 .env
+
+# Ignore application configuration
+/config/application.yml

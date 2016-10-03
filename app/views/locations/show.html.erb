@@ -1,33 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<div id="breadcrumbs">
-  <% @location.ancestors.each do |loc| %>
-    <%= link_to loc.name, loc %> &gt;
-  <% end %>
-</div>
-<br>
-
 <p>
-  <strong>Name:</strong>
-  <%= @location.name %>
-</p>
+  <div id="breadcrumbs">
+    <% @location.ancestors.each do |loc| %>
+      <%= link_to loc.name, loc %> &gt;
+    <% end %>
+    <%= @location.name %>
+    <b>(</b>
+    <% @location.children.each do |child| %>
+       <%= link_to child.name, child %> 
+    <% end %>
+    <b>)</b>
+    - 
+    <%= @location.location_type %>
+    -
+    <%= @location.item_type.name if @location.item_type %>
+    </div>
+</p> 
 
-<p>
-  <strong>Location type:</strong>
-  <%= @location.location_type %>
-</p>
-
-<b>Children</b>
-
-<p>
-  <% @location.children.each do |child| %>
-     <%= link_to child.name, child %> 
-  <% end %> 
-  </p>
-<br>
 
 <b>Inventory at location </b>
-
 
 <table  class="table table-striped", style="width: auto; height: auto">
   <thead>
@@ -42,7 +34,7 @@
   <tbody>
 	<% @inventory.each do |inventory| %>
       <tr data-item-id=<%= "#{inventory.id}"%> class="item", height="10">
-		  <td> <%= inventory.item.name %></td>
+		  <td> <%= link_to inventory.item.name, inventory.item %></td>
 		  <td> <%= inventory.qty.to_s %></td>
       <td> <%= inventory.arrival_date %></td>
 		<tr>
