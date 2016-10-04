@@ -3,8 +3,9 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on 'click', 'form .remove_fields', (event) ->
-  $(this).prev('input[type=hidden]').val('1')
+  $(this).prev('input[type=hidden]').val('true')
   $(this).closest('fieldset').hide()
+  #alert("removing..." + $(this).prev('input[type=text]').id)
   event.preventDefault()
 
 $(document).on 'click', 'form .add_fields', (event) ->

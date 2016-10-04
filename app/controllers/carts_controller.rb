@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
-
-   autocomplete :item, :name, :full => true
+  
+  autocomplete :item, :name, :full => true
 
   # GET /carts
   # GET /carts.json
@@ -23,16 +23,17 @@ class CartsController < ApplicationController
     @cart.from_location_id = @transaction_type.from_location_id
     @cart.to_location_id = @transaction_type.to_location_id
     @cart.process_status = "draft"
-  end
+  end  
 
   # GET /carts/1/edit
   def edit
-    @cart = Cart.find_by_id(params[:id])
+   
   end
 
   # POST /carts
   # POST /carts.json
   def create
+    puts "***CartController#create****"
     @cart = Cart.new(cart_params)
 
     respond_to do |format|
@@ -68,8 +69,7 @@ class CartsController < ApplicationController
   # PATCH/PUT /carts/1.json
   def update
   
-    #Cartverification.new().verify(params)
-
+  
     respond_to do |format|
       if @cart.update(cart_params)
         format.html { redirect_to @cart, notice: 'Item was successfully updated.' }
@@ -99,7 +99,7 @@ class CartsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cart_params
-      params.require(:cart).permit!
+      params.require(:cart).permit(:id, :from_location_id, :to_location_id, :process_status, cart_items_attributes: [:item_name, :qty, :arrival_date, :status_code, :status_text, :id, :cart_id, :_destroy ])
     end
 
 
@@ -115,6 +115,10 @@ class CartsController < ApplicationController
         else
           @inventory.qty = @inventory.qty + qty
         end  
-        @inventory.save
+        if @inventory.qty != 0 then
+          @inventory.save
+        else
+          @inventory.delete
+        end  
     end 
 end

@@ -6,7 +6,7 @@ class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.json
   def index
-    @locations = Location.all.order(:ancestry).paginate(:page => params[:page])
+    @locations = Location.all.order(:name).paginate(:page => params[:page])
     #@locations = Location.roots
   end
 
