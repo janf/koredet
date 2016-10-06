@@ -106,19 +106,19 @@ class CartsController < ApplicationController
     # Helper method for processing_cart, should be moved to inventory model ?
     def update_inventory(location_id, item_id, arrival_date, qty)
         logger.debug "location_id: #{location_id}, item_id: #{item_id}"
-        @inventory = Inventory.find_or_initialize_by(location_id: location_id, arrival_date: arrival_date, item_id: item_id)
-        @inventory.location_id = location_id
-        @inventory.item_id = item_id
-        @inventory.arrival_date = arrival_date
-        if @inventory.qty.nil?
-          @inventory.qty = qty
+        inventory = Inventory.find_or_initialize_by(location_id: location_id, arrival_date: arrival_date, item_id: item_id)
+        inventory.location_id = location_id
+        inventory.item_id = item_id
+        inventory.arrival_date = arrival_date
+        if inventory.qty.nil?
+          inventory.qty = qty
         else
-          @inventory.qty = @inventory.qty + qty
+          inventory.qty = inventory.qty + qty
         end  
-        if @inventory.qty != 0 then
-          @inventory.save
+        if inventory.qty != 0 then
+          inventory.save
         else
-          @inventory.delete
+          inventory.delete
         end  
     end 
 end

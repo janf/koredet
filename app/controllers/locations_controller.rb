@@ -20,7 +20,7 @@ class LocationsController < ApplicationController
                                         from inventories, items 
                                         where (inventories.item_id = items.id) 
                                         and (inventories.location_id = ?) 
-                                        order by items.name', @id ]).paginate(:page => params[:page], :per_page => 10)
+                                        order by items.name', @id ]).paginate(:page => params[:page])
   end
 
   # GET /locations/new

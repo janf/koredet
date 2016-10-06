@@ -8,6 +8,7 @@ class CartItem < ApplicationRecord
   before_save        :check_inventory
   before_save        :default_arrival_date 
   #before_save        :check_new_item
+  
 
 
   validates :item_name, presence: true
