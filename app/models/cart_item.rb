@@ -46,14 +46,18 @@ class CartItem < ApplicationRecord
 
   private 
     def default_qty
+      puts "Cart#default_qty"
       self.qty ||= "1"
     end  
 
     def default_arrival_date
+      puts "Cart#arrival_date"
       self.arrival_date ||= Date.today
     end  
 
     def check_inventory
+      puts "Cart#check_inventory"
+
       self.status_code = "O"
       self.status_text = ""
       if cart.from_location.location_type == "Physical" then
@@ -78,7 +82,7 @@ class CartItem < ApplicationRecord
             self.status_text = ""
           end  
 
-          self.arrival_date |= inv.arrival_date   
+          self.arrival_date ||= inv.arrival_date   
         end 
       end
    
