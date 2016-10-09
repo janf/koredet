@@ -55,7 +55,7 @@ class CartsController < ApplicationController
     @cart.cart_items.each do |ci| 
       update_inventory(@cart.from_location_id, ci.item_id, ci.arrival_date, -ci.qty)
       update_inventory(@cart.to_location_id, ci.item_id, ci.arrival_date, ci.qty)
-    end  
+    end
 
     @cart.process_status = "processed"
     if @cart.save 

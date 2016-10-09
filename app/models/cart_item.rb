@@ -8,6 +8,7 @@ class CartItem < ApplicationRecord
   before_save        :check_inventory
   before_save        :default_arrival_date 
   #before_save        :check_new_item
+  after_save         :update_item_type
   
 
 
@@ -46,17 +47,17 @@ class CartItem < ApplicationRecord
 
   private 
     def default_qty
-      puts "Cart#default_qty"
+      #puts "Cart#default_qty"
       self.qty ||= "1"
     end  
 
     def default_arrival_date
-      puts "Cart#arrival_date"
+      #puts "Cart#arrival_date"
       self.arrival_date ||= Date.today
     end  
 
     def check_inventory
-      puts "Cart#check_inventory"
+      #puts "Cart#check_inventory"
 
       self.status_code = "O"
       self.status_text = ""
@@ -85,8 +86,14 @@ class CartItem < ApplicationRecord
           self.arrival_date ||= inv.arrival_date   
         end 
       end
-   
     end    
 
+    def update_item_type
+      #puts "Cart#update_item_type"
+      if self.item.item_type.id == -1 then
+        self.item.item_type_id = self.cart.to_location.default_item_type_id
+        self.item.save
+      end
+    end    
  
 end
