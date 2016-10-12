@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all.order(:name).where(item_type_id: params[:item_type_id]).paginate(:page => params[:page])
+    @items = Item.all.order(:name).where(item_type_id: params[:item_type_id]).paginate(:page => params[:page], :per_page => 15)
   end
 
   # GET /items/1
@@ -23,6 +23,7 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+    @original_item_type_id = params[:item_type_id]
   end
 
   # POST /items
