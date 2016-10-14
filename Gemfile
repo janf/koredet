@@ -47,6 +47,8 @@ gem 'ancestry'
 
 gem 'acts_as_tenant'
 
+gem 'pundit'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
