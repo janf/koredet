@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
   
+  get 'user_profiles/show'
+
+  get 'user_profiles/edit'
+
+  get 'accounts/show'
+
+  get 'accounts/edit'
+
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }

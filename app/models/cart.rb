@@ -1,4 +1,7 @@
 class Cart < ApplicationRecord
+
+  acts_as_tenant(:account)
+
   belongs_to :from_location, class_name: "Location"
   belongs_to :to_location, class_name: "Location"
   has_many :cart_items,  dependent: :destroy
@@ -11,7 +14,7 @@ class Cart < ApplicationRecord
   private
 
     def item_name_missing?(att)
-       att['item_name'].blank? && new_record?
+      att['item_name'].blank? && new_record?
     end 
 
 end

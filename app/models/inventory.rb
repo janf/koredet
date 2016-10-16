@@ -1,4 +1,7 @@
 class Inventory < ApplicationRecord
-  belongs_to :location
-  belongs_to :item
+	
+ 	acts_as_tenant(:account)
+
+  	belongs_to :location
+  	belongs_to :item
 end

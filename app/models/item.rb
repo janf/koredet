@@ -1,4 +1,7 @@
 class Item < ApplicationRecord
+
+	acts_as_tenant(:account)
+
 	belongs_to :item_type
 	has_many :inventories, dependent: :destroy
 	has_many :cart_items, dependent: :destroy

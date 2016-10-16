@@ -1,0 +1,26 @@
+<h1><%= @account.account_name %> </h1>
+
+<p id="notice"><%= notice %></p>
+
+<table  class="table table-striped", style="width: auto; height: auto">
+  	<thead>
+	    <tr>
+		    <th>User</th>
+		    <th>Local admin</th>
+		    <th>Member since</th>
+	    	</tr>
+	</thead>
+
+  	<tbody>
+		<% @user_accounts.each do |ua| %>
+	      	<tr>
+			  	<td> <%= ua.user.email %></td>
+			  	<td> <%= ua.account_admin %></td>
+	      		<td> <%= ua.created_at %></td>
+			<tr>
+		<% end %>	
+	 </tbody>
+</table>
+
+<%= link_to 'Edit',  "#" %> 
+<%= link_to 'Back', root_url %>

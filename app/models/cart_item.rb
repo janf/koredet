@@ -1,4 +1,7 @@
 class CartItem < ApplicationRecord
+
+  acts_as_tenant(:account)
+
   belongs_to :cart
   belongs_to :item
 

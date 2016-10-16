@@ -1,4 +1,7 @@
 class ItemType < ApplicationRecord
+ 	
+ 	acts_as_tenant(:account)
+
 	has_many :fields, class_name: "ItemField"
 	has_many :items
 	has_many :locations, dependent: :nullify

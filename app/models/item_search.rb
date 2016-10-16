@@ -1,4 +1,7 @@
 class ItemSearch < ApplicationRecord
+
+	acts_as_tenant(:account)
+
 	def items
 		@items ||= find_items
 	end

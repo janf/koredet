@@ -1,3 +1,7 @@
 class ItemField < ApplicationRecord
-  belongs_to :item_type, optional: true
+
+	acts_as_tenant(:account)
+
+  	belongs_to :item_type, optional: true
+  	
 end
