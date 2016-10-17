@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161015071335) do
+ActiveRecord::Schema.define(version: 20161016173954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,11 +66,13 @@ ActiveRecord::Schema.define(version: 20161015071335) do
     t.string   "to_email"
     t.string   "from_email"
     t.string   "token"
-    t.string   "invitation_type"
-    t.string   "status"
+    t.integer  "invitation_type"
+    t.integer  "status"
     t.date     "expiry_date"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "accounts_id"
+    t.index ["accounts_id"], name: "index_invitations_on_accounts_id", using: :btree
   end
 
   create_table "item_fields", force: :cascade do |t|
@@ -192,6 +194,7 @@ ActiveRecord::Schema.define(version: 20161015071335) do
   add_foreign_key "inventories", "accounts"
   add_foreign_key "inventories", "items"
   add_foreign_key "inventories", "locations"
+  add_foreign_key "invitations", "accounts", column: "accounts_id"
   add_foreign_key "item_fields", "accounts"
   add_foreign_key "item_fields", "item_types"
   add_foreign_key "item_types", "accounts"

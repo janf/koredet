@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :accounts,  :through => :user_accounts
+  has_many :user_accounts
   belongs_to :current_account, class_name: "Account"
 end

@@ -1,5 +1,6 @@
 class ItemSearchesController < ApplicationController
-
+	before_action :authenticate_user!
+	
 	def new
     	@item_search = ItemSearch.new
   	end

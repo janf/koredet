@@ -11,11 +11,14 @@
 	 <li><%= link_to "Inventories ("  + @inventory_count.to_s + ")", :inventories    %></li>
  <% end %>
 
-<% @transaction_types.each do |t| %>
+<% if current_user.current_account.present? %>
+	<% @transaction_types.each do |t| %>
     	<%= link_to t.name, new_cart_path(:transaction_type_id => t.id), class: "btn btn-primary",:style=>'color:#FFFFFF;'%>
 	<% end %>
+<% else %>
+	<b>No account set, go to <%= link_to 'user Profile', user_profiles_path %></b>
+<% end %>	
 
- <p></p>
 <p></p>
 
 

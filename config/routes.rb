@@ -1,16 +1,23 @@
 Rails.application.routes.draw do
   
-  get 'user_profiles/show'
+  resource :user_profiles, only: [:edit, :show, :update] do
+    member do
+      put :accept_invitation
+    end  
+  end  
 
-  get 'user_profiles/edit'
-
-  get 'accounts/show'
-
-  get 'accounts/edit'
+  resources :accounts do
+    member do 
+      put :invite_member
+    end
+  end    
 
   devise_for :users, controllers: {
-    sessions: 'users/sessions'
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
   }
+
+  resource :accounts, only: [:new, :create, :edit, :show]
 
   resources :cart_items
   resources :carts do

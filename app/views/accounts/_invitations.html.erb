@@ -1,0 +1,24 @@
+<% if @account.invitations.count > 0 %>
+	<h3>Invitation</h3>
+	<table  class="table table-striped", style="width: auto; height: auto">
+	  	<thead>
+		    <tr>
+			    <th>Email</th>
+			    <th>Status</th>
+			    <th>Expiry date</th>
+		    </tr>
+		</thead>
+
+	  	<tbody>
+			<% @account.invitations.each do |i| %>
+				<% if i.open_invitation %>
+			      	<tr>
+					  	<td> <%= i.to_email %></td>
+					  	<td> <%= i.status %></td>
+			      		<td> <%= i.expiry_date %></td>
+					<tr>
+				<% end %>
+			<% end %>	
+		 </tbody>
+	</table>
+<% end %>
