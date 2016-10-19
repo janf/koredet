@@ -19,14 +19,10 @@ class UserProfilesController < ApplicationController
   end
 
   def update
-    puts "Readonly: " + @readonly.to_s
     if @readonly == true then
       @readonly = false
     else  
-      puts "updating user 2"
       @user = current_user
-      puts params[:user].to_s
-      puts user_params.to_yaml
       respond_to do |format|
         if @user.update(user_params)
           format.html { redirect_to action: "show", notice: 'User info was successfully updated.' }

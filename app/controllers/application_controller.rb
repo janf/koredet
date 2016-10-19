@@ -11,13 +11,13 @@ class ApplicationController < ActionController::Base
 	def set_tenant
 		if user_signed_in?
 			set_current_tenant(current_user.current_account)
-			puts "User: " + current_user.email 
-			if current_user.current_account_id.nil?
-				puts " Account:  is nil"
-			else
-				puts " Account:  " + current_user.current_account_id.to_s
-				puts " From ActsAsTenanat: " + ActsAsTenant.current_tenant.id.to_s
-			end	
+			#puts "User: " + current_user.email 
+			#if current_user.current_account_id.nil?
+			#	puts " Account:  is nil"
+			#else
+			#	puts " Account:  " + current_user.current_account_id.to_s
+			#	puts " From ActsAsTenanat: " + ActsAsTenant.current_tenant.id.to_s
+			#end	
 		end
 
 	end
