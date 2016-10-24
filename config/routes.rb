@@ -1,14 +1,20 @@
 Rails.application.routes.draw do
   
+  get 'system/show'
+  put 'system/invite_create_member'
+
   resource :user_profiles, only: [:edit, :show, :update] do
     member do
-      put :accept_invitation
+      put :member_invitation
+      put :new_account_invitation
+      put :change_current_account
     end  
   end  
 
   resources :accounts do
     member do 
       put :invite_member
+      delete :admin_destroy
     end
   end    
 

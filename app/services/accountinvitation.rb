@@ -1,4 +1,4 @@
-class Accountinvitation
+class AccountInvitation
 
 	def initialize(to_email, account)
 		@to_email = to_email

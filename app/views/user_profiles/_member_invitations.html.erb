@@ -1,0 +1,24 @@
+<% if @member_invitations.count > 0 %>
+	<h3>Invitations</h3>
+	<table  class="table table-striped", style="width: auto; height: auto">
+	  	<thead>
+		    <tr>
+			    <th>Account</th>
+			    <th>Invited by</th>
+			    <th>Expiry date</th>
+			    <th></th>
+			</tr>
+		</thead>
+
+	  	<tbody>
+			<% @member_invitations.each do |inv| %>
+			  	<tr>
+				  	<td> <%= inv.account.account_name %></td>
+					<td> <%= inv.from_email %></td>
+					<td> <%= inv.expiry_date %></td>
+					<td> <%= link_to "Accept", accept_invitation_user_profiles_path(token: inv.token), method: :put %></td>
+				</tr>
+			<% end %>	
+		 </tbody>
+	</table>
+<% end %>

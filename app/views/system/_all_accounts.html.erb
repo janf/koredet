@@ -1,0 +1,28 @@
+<h3>Accounts</h3>
+<table  class="table table-striped", style="width: auto; height: auto">
+  	<thead>
+	    <tr>
+		    <th>Account name</th>
+		    <th>Create</th>
+		    <th>Administrators</th>
+		    <th>Action</th>
+	    	</tr>
+	</thead>
+
+  	<tbody>
+		<% @accounts.each do |a| %>
+	      	<tr>
+			  	<td> <%= a.account_name %></td>
+			  	<td> <%= a.created_at %></td>
+			  	<td>
+			  	<% a.account_admins.each do |adm| %>
+	      		 	<%= adm.user.email %>;
+	      		<% end %>
+	      		</td>
+	      		<td>
+	      		<%= link_to 'Destroy', admin_destroy_account_path(a), method: :delete, data: { confirm: 'Are you sure?' } %>
+	      		</td>
+			<tr>
+		<% end %>	
+	 </tbody>
+</table>

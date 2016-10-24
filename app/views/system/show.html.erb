@@ -1,0 +1,19 @@
+<h2>System console</h2>
+<p id="notice"><%= notice %></p>
+
+<%= render 'all_accounts' %>
+
+	
+<%= render 'invitations' %>
+
+<b>Send invitation to create new account<b>
+<p>
+<%= form_tag(system_invite_create_member_path, method: "put") do %>
+	<%= label_tag(:email, "Email") %>
+	<%= text_field_tag(:email) %>
+	<%= submit_tag("Invite") %>
+<% end %>
+</p>
+<br>
+<%= link_to 'Back', root_url %>
+

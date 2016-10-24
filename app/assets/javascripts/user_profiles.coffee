@@ -3,9 +3,8 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on 'turbolinks:load' , ->
-#  	$(update_user).prop("value", "Edit user info")
-	$(edit_user_1).find(":text").css("border", "none")
-#	alert("page loaded")
+  	$(edit_user_1).find(":text").css("border", "none")
+	#alert("page loaded")
 
 	
 $(document).on 'click', 'form .update_user_profile', (event) ->

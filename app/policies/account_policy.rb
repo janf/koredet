@@ -11,4 +11,7 @@ class AccountPolicy < ApplicationPolicy
  		user_account.account_admin
  	end	
 
+ 	def admin_destroy?
+ 		current_user.global_admin
+ 	end
 end

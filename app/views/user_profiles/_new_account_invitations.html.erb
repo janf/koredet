@@ -1,0 +1,24 @@
+<% if @new_account_invitations.count > 0 %>
+	<h3>Invitations</h3>
+	<table  class="table table-striped", style="width: auto; height: auto">
+	  	<thead>
+		    <tr>
+		    	<th>Type</th>
+			    <th>Invited by</th>
+			    <th>Expiry date</th>
+			    <th></th>
+			</tr>
+		</thead>
+
+	  	<tbody>
+			<% @new_account_invitations.each do |inv| %>
+			  	<tr>	
+			  		<td>Permission to create one account</td>
+					<td> <%= inv.from_email %></td>
+					<td> <%= inv.expiry_date %></td>
+					<td> <%= link_to "Create new account", new_account_invitation_user_profiles_path(token: inv.token), method: :put %></td>
+				</tr>
+			<% end %>	
+		 </tbody>
+	</table>
+<% end %>

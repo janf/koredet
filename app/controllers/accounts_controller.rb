@@ -27,15 +27,14 @@ class AccountsController < ApplicationController
 
 		@email = params[:email]
 		puts "Inviting: " + @email
-		# do something
 		
-		msg = "Invitation sendt"
+		accinv = AccountInvitation.new(@email, current_user.email)
 
-		accinv = Accountinvitation.new(@email, @account)
+		account = @account
 		
-		if !(accinv.existing_member or accinv.existing_invitation)
-			accinv.create_account_invitation(current_user.email)
-			accinv.send_account_invitation(new_user_registration_path)
+		if !(accinv.existing_member(@account) or accinv.existing_member_invitation(@account))
+			accinv.create_member_invitation(@account)
+			accinv.send_invitation(new_user_registration_path)
 		else
 			msg =  'User is already member or invited, inivtation not sent'
 		end	
@@ -44,6 +43,17 @@ class AccountsController < ApplicationController
 		redirect_to  @account,  notice: msg 
 
 	end
+
+	def admin_destroy
+		# Should be moved to system_controller ? Is here to be restful
+	    @account = Account.find(params[:id])
+	    @account.destroy
+		respond_to do |format|
+	  		format.html { redirect_to :back, notice: 'Item was successfully destroyed.' }
+	  		format.json { head :no_content }
+      	end	
+    end
+
 
 	private
 
