@@ -4,8 +4,7 @@
 
 $(document).on 'turbolinks:load' , ->
   	$(edit_user_1).find(":text").css("border", "none")
-	#alert("page loaded")
-
+	
 	
 $(document).on 'click', 'form .update_user_profile', (event) ->
 	#alert("Clicked button")
