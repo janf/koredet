@@ -6,18 +6,17 @@ class AccountInvitation
 	end	
 
 
-	def existing_member(account)
+	def existing_member?(account_id)
 		@user = User.find_by(email: @to_email)
 		if @user.present? then
-			useraccount = UserAccount.exists?(user_id: @user.id, account_id: account.id)
+			useraccount = UserAccount.exists?(user_id: @user.id, account_id: account_id)
 		else
 			false
 		end		
 	end
 
-	def existing_member_invitation(account)
-		puts account.id.to_s
-		Invitation.exists?(to_email: @to_email, accounts_id: account.id, status: :sent, invitation_type: :member)
+	def existing_member_invitation?(account_id)
+		Invitation.exists?(to_email: @to_email, accounts_id: account_id, status: :sent, invitation_type: :member)
 	end	
 
 
@@ -25,7 +24,7 @@ class AccountInvitation
 		inv = Invitation.new
 		inv.accounts_id = account.id
 		inv.to_email = @to_email
-		inv.from_email = from_email
+		inv.from_email = @from_email
 		inv.invitation_type = :member
     	inv.status = :created
     	inv.set_expiry_date

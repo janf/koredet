@@ -32,7 +32,7 @@ class AccountsController < ApplicationController
 
 		account = @account
 		
-		if !(accinv.existing_member(@account) or accinv.existing_member_invitation(@account))
+		if !(accinv.existing_member?(account.id) or accinv.existing_member_invitation?(account.id))
 			accinv.create_member_invitation(@account)
 			accinv.send_invitation(new_user_registration_path)
 		else
