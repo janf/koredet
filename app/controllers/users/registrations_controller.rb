@@ -12,7 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         invited_user = User.find_by(email: @invitation.to_email)
         if invited_user.present?
           sign_out current_user
-          redirect_to new_user_session_path
+          redirect_to new_user_session_path(email: @invitation.to_email)
         end    
         @user.email = @invitation.to_email 
         #puts "Invitation email " + @invitation.to_email

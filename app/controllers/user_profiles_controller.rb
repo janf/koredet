@@ -54,9 +54,9 @@ class UserProfilesController < ApplicationController
 
   	if invitation.present?
   		
-  		if create_user_account(invitation.account_id, false)
+  		if create_user_account(invitation.accounts_id, false)
 		  	if current_user.user_accounts.count == 1
-		  		current_user.current_account = invitation.account_id
+		  		current_user.current_account = invitation.accounts_id
 		  		current_user.save!
 		  		set_current_tenant(current_user.current_account)
         end  

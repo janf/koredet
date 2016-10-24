@@ -39,9 +39,7 @@ class AccountsController < ApplicationController
 			msg =  'User is already member or invited, inivtation not sent'
 		end	
 
-
 		redirect_to  @account,  notice: msg 
-
 	end
 
 	def admin_destroy

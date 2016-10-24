@@ -16,7 +16,7 @@
 				  	<td> <%= inv.account.account_name %></td>
 					<td> <%= inv.from_email %></td>
 					<td> <%= inv.expiry_date %></td>
-					<td> <%= link_to "Accept", accept_invitation_user_profiles_path(token: inv.token), method: :put %></td>
+					<td> <%= link_to "Accept",  member_invitation_user_profiles_path(token: inv.token), method: :put %></td>
 				</tr>
 			<% end %>	
 		 </tbody>
