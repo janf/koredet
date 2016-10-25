@@ -81,7 +81,7 @@ class UserProfilesController < ApplicationController
       puts "Created new account. ID: " + account.id.to_s
       if account.save!
         create_user_account(account.id, true)        
-        current_user.current_account = Account.find(invitation.accounts_id)
+        current_user.current_account = account
         current_user.save!
         invitation.status = :accepted
         invitation.save!
