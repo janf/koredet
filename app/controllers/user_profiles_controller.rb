@@ -56,7 +56,7 @@ class UserProfilesController < ApplicationController
   		
   		if create_user_account(invitation.accounts_id, false)
 		  	if current_user.user_accounts.count == 1
-		  		current_user.current_account = invitation.accounts_id
+		  		current_user.current_account = Account.find(invitation.accounts_id)
 		  		current_user.save!
 		  		set_current_tenant(current_user.current_account)
         end  
@@ -81,6 +81,8 @@ class UserProfilesController < ApplicationController
       puts "Created new account. ID: " + account.id.to_s
       if account.save!
         create_user_account(account.id, true)        
+        current_user.current_account = Account.find(invitation.account_id)
+        current_user.save!
         invitation.status = :accepted
         invitation.save!
       end
