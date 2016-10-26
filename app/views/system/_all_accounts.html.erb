@@ -6,7 +6,7 @@
 		    <th>Create</th>
 		    <th>Administrators</th>
 		    <th>Action</th>
-	    	</tr>
+	    </tr>
 	</thead>
 
   	<tbody>
@@ -20,7 +20,7 @@
 	      		<% end %>
 	      		</td>
 	      		<td>
-	      		<%= link_to 'Destroy', admin_destroy_account_path(a), method: :delete, data: { confirm: 'Are you sure?' } %>
+	      		<%= button_to 'Destroy', admin_destroy_account_path(a), method: :delete, data: { confirm: 'Are you sure?' } %>
 	      		</td>
 			<tr>
 		<% end %>	

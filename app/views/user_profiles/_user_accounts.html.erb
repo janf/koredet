@@ -16,12 +16,12 @@
 		      		<% if ua.account == current_user.current_account %>
 						<td><b> <%= ua.account.account_name %></b></td>
 						<td><b> <%= ua.created_at %></b></td>
-						<td><b>Current</b></td>
-						</b>
+						<td><%=button_to "Show", ua.account, method: :get %></td>
+						
 					<% else %>
 		      			<td> <%= ua.account.account_name %></td>
 						<td> <%= ua.created_at %></td>
-						<td><%=link_to "Change to", change_current_account_user_profiles_path(account_id: ua.account_id), method: :put %></td>
+						<td><%=button_to "Change to", change_current_account_user_profiles_path(account_id: ua.account_id), method: :put %></td>
 					<% end %>
 				</tr>
 			<% end %>	

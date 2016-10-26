@@ -26,7 +26,9 @@ class UserProfilesController < ApplicationController
       @user = current_user
       respond_to do |format|
         if @user.update(user_params)
-          format.html { redirect_to action: "show", notice: 'User info was successfully updated.' }
+          format.html { flash[:notice] = 'User info was successfully updated.' 
+                        redirect_to action: "show"  
+                      }
           format.json { render :show, status: :ok, location: @location }
         else
           format.html { render :edit }
@@ -87,7 +89,8 @@ class UserProfilesController < ApplicationController
         invitation.save!
       end
     end
-    redirect_to action: "show"
+    @account = account
+    redirect_to @account
   end
 
 

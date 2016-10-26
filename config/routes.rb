@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   
   get 'system/show'
-  put 'system/invite_create_member'
+  put 'system/invite_create_account'
+  put 'system/cancel_invite_create_account'
+
 
   resource :user_profiles, only: [:edit, :show, :update] do
     member do

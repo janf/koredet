@@ -6,7 +6,7 @@
 			    <th>To email</th>
 			    <th>Status</th>
 			    <th>Expiry date</th>
-			    <th></th>
+			    <th>Action</th>
 		    </tr>
 		</thead>
 
@@ -16,15 +16,15 @@
 				  	<td> <%= i.to_email %></td>
 				  	<td> <%= i.status %></td>
 		      		<td> <%= i.expiry_date %></td>
-		      		<td> <%= link_to "Cancel", "#" %></td>
+		      		<td> <%= button_to "Cancel", system_cancel_invite_create_account_path, method: :put, params: {invitation_id: i.id} %></td>
 				<tr>
 			<% end %>	
 		 </tbody>
 	</table>
 <% end %>
 
-<b>Send invitation to create new account<b>
-<%= form_tag(system_invite_create_member_path, method: "put") do %>
+<b>Send invitation to create new account</b>
+<%= form_tag(system_invite_create_account_path, method: "put") do %>
 	<%= label_tag(:email, "Email") %>
 	<%= text_field_tag(:email) %>
 	<%= submit_tag("Invite") %>

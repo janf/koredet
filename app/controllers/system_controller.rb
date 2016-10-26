@@ -5,7 +5,7 @@ class SystemController < ApplicationController
 	  	@invitations = Invitation.unscoped.where(invitation_type: :new_account, status: :sent).order(to_email: :asc)
 	end
 
-  	def invite_create_member
+  	def invite_create_account
   		email = params[:email]
 		puts "Inviting: " + email
 		# do something
@@ -18,4 +18,13 @@ class SystemController < ApplicationController
   		flash[:notice] = "Invitation created"
   		redirect_back(fallback_location: root_url)
  	end
+
+ 	def cancel_invite_create_account
+ 		inv = Invitation.find(params[:invitation_id])
+ 		inv.status = :cancelled
+ 		inv.save!
+
+ 		flash[:notice] = "Invitation cancelled"
+ 		redirect_back(fallback_location: root_url)
+ 	end	
 end

@@ -1,4 +1,4 @@
-<%= form_for @user, url: user_profiles_path, html: { method: :put, :class => 'form', :data => "readonly"} do |f| %>
+<%= form_for @user, url: user_profiles_path, html: { method: :put, :class => 'form user_data_fields', :data => "readonly"} do |f| %>
 
 	<% if @user.errors.any? %>
 	   	<div id="error_explanation">
