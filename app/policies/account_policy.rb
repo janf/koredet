@@ -17,12 +17,12 @@ class AccountPolicy < ApplicationPolicy
  		current_user.global_admin
  	end
 
- 	private
 
  	def is_account_admin?
  		user_account = UserAccount.where(user_id: @current_user.id).first
  		user_account.account_admin
  	end
+
 
 end
 

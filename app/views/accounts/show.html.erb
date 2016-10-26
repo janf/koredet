@@ -21,7 +21,9 @@
 		
 	    <div class="col-sm-6">
 
-		<%= render 'get_started' %>
+	    <% if policy(@account).update? %>
+			<%= render 'get_started' %>
+		<% end %>
 
 	    <% if false %>
 	    	<%= render 'data_transfer' %>

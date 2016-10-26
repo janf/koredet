@@ -18,8 +18,10 @@
 	      		<% if ua.user_id == current_user.id %>
 	      			<td></td>
 	      		<% else %>
-	      			<td> <%= button_to "Change admin status", change_admin_status_account_path, method: :put , params: { ua_id: ua.id } %> <td>
-	      		<% end %>	
+	      			<% if policy(@account).is_account_admin? %>
+	      				<td> <%= button_to "Change admin status", change_admin_status_account_path, method: :put , params: { ua_id: ua.id } %> <td>
+	      			<% end %>
+	      		<% end %>		
 			<tr>
 		<% end %>	
 	 </tbody>
