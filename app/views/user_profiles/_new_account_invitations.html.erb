@@ -16,7 +16,7 @@
 			  		<td>Permission to create one account</td>
 					<td> <%= inv.from_email %></td>
 					<td> <%= inv.expiry_date %></td>
-					<td> <%= link_to "Create new account", new_account_invitation_user_profiles_path(token: inv.token), method: :put %></td>
+					<td> <%= button_to "Create new account", new_account_invitation_user_profiles_path(token: inv.token), method: :put %></td>
 				</tr>
 			<% end %>	
 		 </tbody>

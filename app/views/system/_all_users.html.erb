@@ -1,0 +1,26 @@
+			
+<% if @users.count > 0 %>
+<h3>Users</h3>
+	<table  class="table table-striped", style="width: auto; height: auto">
+	  	<thead>
+		    <tr>
+			    <th>Email</th>
+			    <th>Last name</th>
+			    <th>First name</th>
+			    <th>Member since</th>
+			    <th></th>  
+		    </tr>
+		</thead>
+		
+	  	<tbody>
+			<% @users.each do |u| %>
+		      	<tr>
+		      		<td> <%= u.email %></td>
+					<td> <%= u.lastname  if u.lastname  %></td>
+					<td> <%= u.firstname  if u.firstname  %></td>
+					<td> <%= u.created_at %></td>
+				</tr>
+			<% end %>	
+		 </tbody>
+	</table>
+<% end %>

@@ -1,7 +1,8 @@
 class SystemController < ApplicationController
 	def show
-		@users = User.unscoped.all.order(created_at: :desc)
-	  	@accounts = Account.unscoped.all.order(created_at: :desc)
+		@accounts = Account.unscoped.all.order(account_name: :asc)
+		@users = User.unscoped.all.order(email: :asc)
+	  	@invitations = Invitation.unscoped.where(invitation_type: :new_account, status: :sent).order(to_email: :asc)
 	end
 
   	def invite_create_member

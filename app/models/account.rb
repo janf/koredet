@@ -5,6 +5,6 @@ class Account < ApplicationRecord
 
 
 	def account_admins
-		admins = UserAccount.where(account_id: self.id, account_admin: true)
+		admins = UserAccount.unscoped.where(account_id: self.id, account_admin: true)
 	end	
 end

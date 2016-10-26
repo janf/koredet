@@ -1,0 +1,11 @@
+	<h3>Data export and import</h3>
+	<p>Allow account administrator to import and export data</p>
+
+	<p>Export data to file</p>
+	
+	<%= button_to "Export data", export_data_account_path(@account),  method: :put  %>
+
+	<br>
+	<p>Import data from file</p>
+	<%= button_to "Import data", import_data_account_path(@account),  method: :put  %>
+	

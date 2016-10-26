@@ -1,27 +1,31 @@
-<%= image_tag "home.jpg", size: "120x80" %>
+
 <% if current_user.current_account.present? %>
-	<h1><b>Welcome to <%= current_user.current_account.account_name %></b></h1>
+	<h1><%= image_tag "home.jpg", size: "120x80" %><b>   Welcome to <%= current_user.current_account.account_name %></b></h1>
 <% else %>
-	<h1><b>Welcome to Koredet</b></h1>	
+	<h1><%= image_tag "home.jpg", size: "120x80" %><b>   Welcome to Koredet</b></h1>	
 <% end %>	
 
-<% if false %>
- <li><%= link_to "Item Classes (" + @item_class_count.to_s + ")", :item_classes    %></li>
- <li><%= link_to "Item Types (" + @item_type_count.to_s + ")", :item_types    %></li>
- <li><%= link_to "Items ("  + @item_count.to_s + ")", :items    %></li>
- <li>Individual items</li>
- <li><%= link_to "Location Classes (" + @location_class_count.to_s + ")", :location_classes    %></li>
-     <li><%= link_to "Location Types (" + @location_type_count.to_s + ")", :location_types    %></li> " 
- <li><%= link_to "Locations ("  + @location_count.to_s + ")", :locations    %></li>
- <li><%= link_to "Inventories ("  + @inventory_count.to_s + ")", :inventories    %></li>
-<% end %>
 
 <% if current_user.current_account.present? %>
+
+	<% if @location_count == 0 %>
+		<li><%= link_to "No location defined, go to locations" , :locations    %></li>
+	<% end %>	
+
+	<% if @item_type_count == 0 %>
+		<li><%= link_to "No item types defined, go to item type" , :item_types    %></li>
+	<% end %>	
+
+	<% if @transaction_types.count == 0 %>
+		<li><%= link_to "No movement types, goto movement types" , :transaction_types    %></li>
+	<% end %>	
+
+
 	<% @transaction_types.each do |t| %>
     	<%= link_to t.name, new_cart_path(:transaction_type_id => t.id), class: "btn btn-primary",:style=>'color:#FFFFFF;'%>
 	<% end %>
 <% else %>
-	<b>No account set, go to <%= link_to 'user Profile', user_profiles_path %></b>
+	<h3><%= link_to 'Go to User Profile', user_profiles_path %></h3>
 <% end %>	
 
 <p></p>

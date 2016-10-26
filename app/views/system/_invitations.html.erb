@@ -1,0 +1,32 @@
+<% if @invitations.count > 0 %>
+	<h3>Invitations</h3>
+	<table  class="table table-striped", style="width: auto; height: auto">
+	  	<thead>
+		    <tr>
+			    <th>To email</th>
+			    <th>Status</th>
+			    <th>Expiry date</th>
+			    <th></th>
+		    </tr>
+		</thead>
+
+	  	<tbody>
+			<% @invitations.each do |i| %>
+		      	<tr>
+				  	<td> <%= i.to_email %></td>
+				  	<td> <%= i.status %></td>
+		      		<td> <%= i.expiry_date %></td>
+		      		<td> <%= link_to "Cancel", "#" %></td>
+				<tr>
+			<% end %>	
+		 </tbody>
+	</table>
+<% end %>
+
+<b>Send invitation to create new account<b>
+<%= form_tag(system_invite_create_member_path, method: "put") do %>
+	<%= label_tag(:email, "Email") %>
+	<%= text_field_tag(:email) %>
+	<%= submit_tag("Invite") %>
+<% end %>
+			

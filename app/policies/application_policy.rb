@@ -1,8 +1,8 @@
 class ApplicationPolicy
   attr_reader :user, :record
 
-  def initialize(user, record)
-    @user = user
+  def initialize(current_user, record)
+    @current_user = current_user
     @record = record
   end
 
@@ -11,7 +11,8 @@ class ApplicationPolicy
   end
 
   def show?
-    scope.where(:id => record.id).exists?
+    true
+    #scope.where(:id => record.id).exists?
   end
 
   def create?
@@ -34,20 +35,22 @@ class ApplicationPolicy
     false
   end
 
-  def scope
-    Pundit.policy_scope!(user, record.class)
-  end
+  #disable scopes as acts_as_tenant is used
 
-  class Scope
-    attr_reader :user, :scope
+  #def scope
+  #  Pundit.policy_scope!(user, record.class)
+  #end
 
-    def initialize(user, scope)
-      @user = user
-      @scope = scope
-    end
+  #class Scope
+  #  attr_reader :user, :scope
 
-    def resolve
-      scope
-    end
-  end
+  #  def initialize(user, scope)
+  #    @current_user = user
+  #    @scope = scope
+  #  end
+
+  #  def resolve
+  #    scope
+  #  end
+  #end
 end

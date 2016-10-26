@@ -1,24 +1,35 @@
-<h2><%= @account.account_name %> </h2>
-
 <p id="notice"><%= notice %></p>
 
-<%= render 'user_accounts' %>
-
+<h2><%= @account.account_name %> </h2>
 <% if policy(@account).update? %>
-	<%= link_to 'Edit',  edit_account_path(@account) %> 
-	
-	<%= render 'invitations' %>
-
-	<h3>Invite new member</h3>
-	<%= form_tag(invite_member_account_path, method: "put") do %>
-		<%= label_tag(:email, "Email to invite") %>
-		<%= text_field_tag(:email) %>
-		<%= submit_tag("Invite") %>
-	<% end %>
+	<%= link_to 'Change account name',  edit_account_path(@account), method: :get %> 
 <% end %>
+		
 
-<%= link_to "Export data", "#" %>
+<div class="container">
+  	<div class="row">
+	 	<div class="col-sm-6">
+			<%= render 'user_accounts' %>
+			<% if policy(@account).update? %>
+				<%= render 'invitations' %>
+			<% end %>
+			<p>
+			<br>
+			
+			</p>
+		</div>
+		
+	    <div class="col-sm-6">
 
-<%= link_to 'Back', root_url %>
+		<%= render 'get_started' %>
+
+	    <% if false %>
+	    	<%= render 'data_transfer' %>
+		<% end %>
+
+
+	    </div>
+	</div>
+</div>
 
 

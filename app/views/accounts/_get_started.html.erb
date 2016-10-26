@@ -1,0 +1,16 @@
+
+	   
+	    <h3>Getting started<h3>
+
+		<%= image_tag "wizard.jpg", size: "180x120" %>
+
+		 <%= link_to 'Set up my account',  edit_account_path(@account), method: :get %> 
+
+
+
+	    <% if false %>
+		    <h4>1. Set your own account name<h4>
+		    <%= link_to 'Change account name',  edit_account_path(@account), method: :get %> 
+			<h4>2. Add locations<h4>
+		    <%= link_to  'Locations',  locations_path, method: :get %> 
+	    <% end %>

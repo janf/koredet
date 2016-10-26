@@ -14,7 +14,11 @@ Rails.application.routes.draw do
   resources :accounts do
     member do 
       put :invite_member
+      put :cancel_invitation
+      put :change_admin_status
       delete :admin_destroy
+      put  :export_data
+      put  :import_data
     end
   end    
 

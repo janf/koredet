@@ -1,4 +1,4 @@
-<% if @account.invitations.count > 0 %>
+<% if @invitations.count > 0 %>
 	<h3>Invitation</h3>
 	<table  class="table table-striped", style="width: auto; height: auto">
 	  	<thead>
@@ -10,15 +10,21 @@
 		</thead>
 
 	  	<tbody>
-			<% @account.invitations.each do |i| %>
-				<% if i.open_invitation %>
+			<% @invitations.each do |i| %>
 			      	<tr>
 					  	<td> <%= i.to_email %></td>
 					  	<td> <%= i.status %></td>
 			      		<td> <%= i.expiry_date %></td>
+			      		<td> <%= button_to "Cancel invitation", cancel_invitation_account_path, method: :put, params: {invitation_id: i.id} %></td>
 					<tr>
-				<% end %>
 			<% end %>	
 		 </tbody>
 	</table>
+<% end %>
+
+<h3>Invite new member</h3>
+<%= form_tag(invite_member_account_path, method: "put") do %>
+	<%= label_tag(:email, "Email to invite") %>
+	<%= text_field_tag(:email) %>
+	<%= submit_tag("Invite") %>
 <% end %>
