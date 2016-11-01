@@ -1,0 +1,63 @@
+<h1>Account name and members</h1>
+
+<div class="actions">
+	<%= button_to 'Back', previous_wizard_path %>
+	<%= button_to 'Skip', next_wizard_path  %>
+</div>
+
+<%= form_for(@account, url: { action: "update" }) do |f| %>
+    <% if @account.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
+        <ul>
+        <% @account.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :account_name %>
+      <%= f.text_field :account_name %>
+    </div>  
+     
+    <div class="actions">
+      <%= f.submit "Next>>" %>
+    </div>
+  
+<% end %>
+
+<h3>Invite members</h3>
+<%= form_tag(@invitation, url: { action: "update" }, method: "put") do %>
+	<%= label_tag(:email, "Email to invite") %>
+	<%= text_field_tag(:email) %>
+	<%= submit_tag("Invite") %>
+<% end %>
+
+<% if @invitations.count > 0 %>
+	<h3>Invitations</h3>
+	<table  class="table table-striped", style="width: auto; height: auto">
+	  	<thead>
+		    <tr>
+			    <th>Email</th>
+			    <th>Status</th>
+			    <th>Expiry date</th>
+		    </tr>
+		</thead>
+
+	  	<tbody>
+			<% @invitations.each do |i| %>
+			      	<tr>
+					  	<td> <%= i.to_email %></td>
+					  	<td> <%= i.status %></td>
+			      		<td> <%= i.expiry_date %></td>
+					<tr>
+			<% end %>	
+		 </tbody>
+	</table>
+<% end %>
+
+
+
+

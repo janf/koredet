@@ -19,9 +19,11 @@ class Item < ApplicationRecord
 	end
 
 	def validate_properties
-		item_type.fields.each do |field|
-			if field.required? && properties[field.name].blank?
-				errors.add field.name, "must not be blank"
+		if item_type.present?
+			item_type.fields.each do |field|
+				if field.required? && properties[field.name].blank?
+					errors.add field.name, "must not be blank"
+				end
 			end
 		end
 	end			

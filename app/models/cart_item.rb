@@ -41,7 +41,7 @@ class CartItem < ApplicationRecord
   	if !self.item and name != ""
   		newitem = Item.new
   		newitem.name = name
-  		newitem.item_type_id = -1
+  		newitem.item_type_id = nil
   		newitem.save
   		self.item = newitem
       item_id = item.id
@@ -93,7 +93,7 @@ class CartItem < ApplicationRecord
 
     def update_item_type
       #puts "Cart#update_item_type"
-      if self.item.item_type.id == -1 then
+      if self.item.item_type_id == nil then
         self.item.item_type_id = self.cart.to_location.default_item_type_id
         self.item.save
       end

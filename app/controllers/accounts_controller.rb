@@ -87,7 +87,7 @@ class AccountsController < ApplicationController
 	    def set_account
 	    	@account = Account.find(current_user.current_account_id)
 	    	@user_accounts = UserAccount.all  
-	    	@invitations = Invitation.where(invitation_type: :member, status: :sent) 
+	    	@invitations = Invitation.where(invitation_type: :member, status: :sent, accounts_id: @account.id) 
 		end
 
 		def account_params

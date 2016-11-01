@@ -1,0 +1,38 @@
+<h1>Setup item types</h1>
+
+<div class="actions">
+	<%= link_to 'Back', previous_wizard_path %>
+</div>
+
+<div class="actions">
+	<%= button_to 'Next >>', next_wizard_path, method: :get %>
+</div>
+
+
+<% if @item_types.count == 0 %>
+	<div class="actions">
+		<%= button_to 'Add standard item types', account_setup_path, method: :put %>
+	</div>
+	<p>Can be edited and changed later</p>
+<% end %>
+
+<table  class="table table-striped" style="width: auto;">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Created at</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @item_types.each do |item_type| %>
+      <tr>
+        <td><%= link_to item_type.name, item_type_path(item_type) %></td>
+        <td><%= item_type.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

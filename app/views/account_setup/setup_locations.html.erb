@@ -1,0 +1,37 @@
+<h1>Setup locations</h1>
+
+<div class="actions">
+	<%= link_to 'Back', previous_wizard_path %>
+</div>
+
+<div class="actions">
+	<%= button_to 'Next >>', next_wizard_path, method: :get %>
+</div>
+
+
+<% if @locations.count == 0 %>
+	<div class="actions">
+		<%= button_to 'Add standard locations types', account_setup_path, method: :put %>
+	</div>
+	<p>Can be edited and changed later</p>
+<% end %>
+
+<table  class="table table-striped" style="width: auto;">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Created at</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @locations.each do |loc| %>
+      <tr>
+        <td><%= link_to loc.name, location_path(loc) %></td>
+        <td><%= loc.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

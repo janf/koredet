@@ -47,6 +47,7 @@ Rails.application.routes.draw do
   resources :item_searches
   #devise_for :users
   resources  :dashboard
+  resources :account_setup
   get 'search',  to: 'dashboard#search', as: :search 
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

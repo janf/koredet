@@ -59,7 +59,7 @@ class Cartverification
         puts "New item - not saved" 
         line[:status_code] = 'C'
         line[:status_text] = 'Item will be created'
-      else if item.item_type_id == -1 
+      else if item.item_type_id == nil
           puts "New item: " + item.name
           line[:status_code] = 'C'
           line[:status_text] = 'Item will be created'

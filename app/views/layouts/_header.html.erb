@@ -49,9 +49,9 @@
              <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <% if current_user.current_account.present? %>
-                <li><%= link_to current_user.current_account.account_name, account_path(current_user.current_account) %></li>
+                <li><%= link_to "Show account - " + current_user.current_account.account_name, account_path(current_user.current_account) %></li>
               <% end %>
-              <li><%= link_to 'User Profile', user_profiles_path %> </li>
+              <li><%= link_to "Show user - "  + current_user.email, user_profiles_path %> </li>
               <% if current_user.global_admin %>
                 <li><%= link_to 'System console', system_show_path %> </li>
               <% end %>

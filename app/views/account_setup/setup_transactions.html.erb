@@ -1,0 +1,44 @@
+<h1>Setup transaction types</h1>
+
+<div class="actions">
+	<%= link_to 'Back', previous_wizard_path %>
+</div>
+
+<div class="actions">
+	<%= button_to 'Next >>', next_wizard_path, method: :get %>
+</div>
+
+<% if @transaction_types.count == 0 %>
+	<div class="actions">
+		<%= button_to 'Add standard transaction_types types', account_setup_path, method: :put %>
+	</div>
+	<p>Can be edited and changed later</p>
+<% end %>
+
+<table  class="table table-striped" style="width: auto;">
+  <thead>
+    <tr>
+	    <th>Name</th>
+	    <th>From location</th>
+	    <th>To location</th>
+	    <th>Create new items</th>
+		<th>Input mode</th>   
+      	<th>Created at</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transaction_types.each do |tt| %>
+      <tr>
+        <td><%= link_to tt.name, transaction_type_path(tt) %></td>
+        <td><%= tt.created_at %></td>
+        <td><%= tt.created_at %></td>
+        <td><%= tt.created_at %></td>  
+        <td><%= tt.created_at %></td>
+        <td><%= tt.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

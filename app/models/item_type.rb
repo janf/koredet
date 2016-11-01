@@ -6,4 +6,9 @@ class ItemType < ApplicationRecord
 	has_many :items
 	has_many :locations, dependent: :nullify, foreign_key: :default_item_type_id
 	accepts_nested_attributes_for :fields, allow_destroy: true
+
+	def has_fields?
+		self.fields.count > 0
+	end	
+
 end

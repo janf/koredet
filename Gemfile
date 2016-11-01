@@ -49,6 +49,7 @@ gem 'acts_as_tenant'
 
 gem 'pundit'
 
+gem 'wicked'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
