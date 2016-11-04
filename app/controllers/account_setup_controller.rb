@@ -33,7 +33,8 @@ class AccountSetupController < ApplicationController
 	    	asil = AccountSetupLocations.new()
 			asil.add_locations(current_user.current_account)
   		when :setup_transactions
-  			# create standard transactions
+  			asit = AccountSetupTransactionTypes.new()
+  			asit.add_transaction_types(current_user.current_account)
   		end
 
 

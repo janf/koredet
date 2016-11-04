@@ -21,9 +21,7 @@
 	    <th>Name</th>
 	    <th>From location</th>
 	    <th>To location</th>
-	    <th>Create new items</th>
-		<th>Input mode</th>   
-      	<th>Created at</th>
+	    <th>Created at</th>
     </tr>
   </thead>
 
@@ -31,11 +29,9 @@
     <% @transaction_types.each do |tt| %>
       <tr>
         <td><%= link_to tt.name, transaction_type_path(tt) %></td>
-        <td><%= tt.created_at %></td>
-        <td><%= tt.created_at %></td>
+        <td><%= tt.from_location.name %></td>
+        <td><%= tt.to_location.name %></td>
         <td><%= tt.created_at %></td>  
-        <td><%= tt.created_at %></td>
-        <td><%= tt.created_at %></td>
       </tr>
     <% end %>
   </tbody>
