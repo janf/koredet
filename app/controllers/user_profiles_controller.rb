@@ -7,7 +7,7 @@ class UserProfilesController < ApplicationController
   	@user = current_user
   	@user_accounts = UserAccount.unscoped.where(user_id: @user.id).order(:id)
   	@member_invitations = Invitation.unscoped.where(to_email: @user.email, invitation_type: :member, status: :sent)
-    @new_account_invitations = Invitation.unscoped.where(to_email: @user.email, invitation_type: :new_account, status: :sent)
+    @new_account_invitations = Invitation.unscoped.where("lower(to_email)=?", @user.email.downcase).where(invitation_type: :new_account, status: :sent)
     @readonly = false
   end
 

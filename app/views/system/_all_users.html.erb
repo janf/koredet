@@ -8,7 +8,7 @@
 			    <th>Last name</th>
 			    <th>First name</th>
 			    <th>Member since</th>
-			    
+			    <th>Last sign in</th>
 		    </tr>
 		</thead>
 		
@@ -20,6 +20,7 @@
 				<td> <%= u.lastname  if u.lastname  %></td>
 				<td> <%= u.firstname  if u.firstname  %></td>
 				<td> <%= u.created_at %></td>
+				<td> <%= u.last_sign_in_at %></td>
 			</tr>
 		</tbody>
 		<% end %>	
