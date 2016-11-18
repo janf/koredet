@@ -1,0 +1,29 @@
+<h3>Account users</h3>
+
+<table  class="table table-striped", style="width: auto; height: auto; size: 1.0;">
+  	<thead>
+	    <tr>
+		    <th>User</th>
+		    <th>Local admin</th>
+		    <th>Member since</th>
+		    <th></th>
+	    </tr>
+	</thead>
+
+  	<tbody>
+		<% @user_accounts.each do |ua| %>
+	      	<tr>
+			  	<td> <%= ua.user.email %></td>
+			  	<td> <%= ua.account_admin %></td>
+	      		<td> <%= ua.created_at %></td>
+	      		<% if ua.user_id == current_user.id %>
+	      			<td></td>
+	      		<% else %>
+	      			<% if policy(@account).is_account_admin? %>
+	      				<td> <%= button_to "Change admin status", change_admin_status_account_path, method: :put , params: { ua_id: ua.id } %> <td>
+	      			<% end %>
+	      		<% end %>		
+			<tr>
+		<% end %>	
+	 </tbody>
+</table>

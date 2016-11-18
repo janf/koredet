@@ -16,13 +16,13 @@ class AccountInvitation
 	end
 
 	def existing_member_invitation?(account_id)
-		Invitation.exists?(to_email: @to_email, accounts_id: account_id, status: :sent, invitation_type: :member)
+		Invitation.exists?(to_email: @to_email, account_id: account_id, status: :sent, invitation_type: :member)
 	end	
 
 
 	def create_member_invitation(account)
 		inv = Invitation.new
-		inv.accounts_id = account.id
+		inv.account_id = account.id
 		inv.to_email = @to_email
 		inv.from_email = @from_email
 		inv.invitation_type = :member

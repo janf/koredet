@@ -1,6 +1,6 @@
 class Invitation < ApplicationRecord
 
-	belongs_to :account, foreign_key: "accounts_id"
+	belongs_to :account, foreign_key: "account_id"
 	
 	enum status: [ :created, :sent, :accepted, :rejected, :cancelled, :expired ]
 	enum invitation_type: [ :member, :new_account ]

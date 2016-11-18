@@ -1,0 +1,17 @@
+<h2>Admin console</h2>
+
+
+<table>
+	<body>
+		<td><%= link_to "Accounts", admin_accounts_path, class: "btn btn-primary" %></td>
+		<td><%= link_to "Users", admin_users_path, class: "btn btn-primary" %></td>
+		<td><%= link_to "Statistics", admin_statistic_path, class: "btn btn-primary" %></td>
+	</body>
+</table>
+
+<%= column_chart  @user_activity  %>
+<% if false %>
+<%= geo_chart  ["NO",1 ] %>
+<% end %>
+
+

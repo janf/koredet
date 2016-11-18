@@ -1,7 +1,7 @@
 class Account < ApplicationRecord
 	has_many :user_accounts, :dependent => :destroy
 	has_many :users, :through => :user_accounts
-	has_many :invitations, :foreign_key => :accounts_id, :dependent => :destroy
+	has_many :invitations, :foreign_key => :account_id, :dependent => :destroy
 
 
 	def account_admins

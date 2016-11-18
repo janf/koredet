@@ -53,7 +53,7 @@
               <% end %>
               <li><%= link_to "Show user - "  + current_user.email, user_profiles_path %> </li>
               <% if current_user.global_admin %>
-                <li><%= link_to 'System console', system_show_path %> </li>
+                <li><%= link_to 'Admin console', admin_system_path %> </li>
               <% end %>
               <li><%= link_to "Logout", destroy_user_session_path,  method: :delete %> </li>
             </ul>

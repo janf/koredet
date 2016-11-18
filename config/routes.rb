@@ -1,9 +1,19 @@
 Rails.application.routes.draw do
   
-  get 'system/show'
-  put 'system/invite_create_account'
-  put 'system/cancel_invite_create_account'
+  namespace :admin do
 
+    resource :system, only: [:show]
+    
+    resource :statistic, only: [:show]
+      
+    resource :account, only: [] do 
+      put :invite_create_account
+      put :cancel_invite_create_account
+    end
+
+    resources :users, only: [:index, :show]
+    resources :accounts, only: [:index, :show]
+  end
 
   resource :user_profiles, only: [:edit, :show, :update] do
     member do

@@ -49,7 +49,7 @@ class AccountSetupController < ApplicationController
 	    when :set_name
 	    	@account = current_user.current_account
 	    when :invite_members
-	    	@invitations = Invitation.where(accounts_id: current_user.current_account.id) # Is not scoped
+	    	@invitations = Invitation.where(account_id: current_user.current_account.id) # Is not scoped
 	    when :setup_item_types
 	    	@item_types = ItemType.all	
 		when :setup_locations

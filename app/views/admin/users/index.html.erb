@@ -1,0 +1,34 @@
+<h3>Users</h3>
+
+<table  class="table table-striped", style="width: auto; height: auto">  <thead>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Email</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Postname</th>
+      <th>Country</th>
+      <th>Created at</th>
+      <th>Last sign in at</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><b><%= "Admin" if user.global_admin %></b></td>
+        <td><%= user.email %></td>
+        <td><%= user.firstname if user.firstname.present? %></td>
+        <td><%= user.lastname if user.lastname.present? %></td>
+        <td><%= user.postname if user.postname.present? %></td>
+        <td><%= user.country if user.country.present? %></td>
+        <td><%= user.created_at%></td>
+        <td><%= user.last_sign_in_at%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back', admin_system_path %>
+

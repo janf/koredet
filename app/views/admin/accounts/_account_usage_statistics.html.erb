@@ -1,0 +1,27 @@
+<h3>Usage statistics</h3>
+<ul>
+	<li><b>Number of items: </b> <%= @num_items %></li>
+	<li><b>Number of locations: </b> <%= @num_locations %></li>
+	<li><b>Number of inventory: </b> <%= @num_inventory %></li>
+	<li><b>Number of transactions: </b> <%= @num_transactions %></li>
+</ul>
+<h3>Latest activity</h3>
+<ul>
+	<li><b>Latest items: </b>
+		<% if @last_item %>
+			 <%= @last_item.name %>  - (<%= @last_item.created_at %>) 
+		<% end %>
+	</li>
+	<li><b>Latest location: </b>
+		<% if  @last_location %>
+			<%= @last_location.name %>  - (<%= @last_location.created_at %>) 
+		<% end %>	
+	</li>
+	<li><b>Latest user:</b>
+		<% if  @last_user %>
+			<%= @last_user.email %>  - (<%= @last_user.last_sign_in_at %>) 
+		<% end %>
+	</li>
+
+</ul>
+

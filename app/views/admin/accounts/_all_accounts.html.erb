@@ -5,6 +5,7 @@
 		    <th>Account name</th>
 		    <th>Create</th>
 		    <th>Administrators</th>
+		    <th>Id</th>
 		    <th>Action</th>
 	    </tr>
 	</thead>
@@ -19,8 +20,9 @@
 	      		 	<%= adm.user.email %>;
 	      		<% end %>
 	      		</td>
+	      		<td><%= a.id.to_s %> </td>
 	      		<td>
-	      		<%= button_to 'Destroy', admin_destroy_account_path(a), method: :delete, data: { confirm: 'Are you sure?' } %>
+	      		<%= link_to 'Show details', admin_account_path(a)  %>
 	      		</td>
 			<tr>
 		<% end %>	

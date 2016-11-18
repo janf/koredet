@@ -16,17 +16,19 @@
 				  	<td> <%= i.to_email %></td>
 				  	<td> <%= i.status %></td>
 		      		<td> <%= i.expiry_date %></td>
-		      		<td> <%= button_to "Cancel", system_cancel_invite_create_account_path, method: :put, params: {invitation_id: i.id} %></td>
+		      		<td> <%= button_to "Cancel", cancel_invite_create_account_admin_account_path, method: :put, params: {invitation_id: i.id} %></td>
 				<tr>
 			<% end %>	
 		 </tbody>
 	</table>
 <% end %>
 
+<% if true %>
 <b>Send invitation to create new account</b>
-<%= form_tag(system_invite_create_account_path, method: "put") do %>
+<%= form_tag(invite_create_account_admin_account_path, method: "put") do %>
 	<%= label_tag(:email, "Email") %>
 	<%= text_field_tag(:email) %>
 	<%= submit_tag("Invite") %>
+<% end %>
 <% end %>
 			
