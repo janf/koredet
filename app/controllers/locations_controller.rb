@@ -1,4 +1,5 @@
 require 'will_paginate/array'
+include DataTransfer
 
 class LocationsController < ApplicationController
   before_action :authenticate_user!
@@ -14,7 +15,7 @@ class LocationsController < ApplicationController
   # GET /locations/1
   # GET /locations/1.json
   def show
-    puts "location-show"
+  
     @id = params[:id]
     #@location = Location.find(params[:id])
     @inventory = Inventory.find_by_sql(['select inventories.*, items.name 
@@ -22,6 +23,12 @@ class LocationsController < ApplicationController
                                         where (inventories.item_id = items.id) 
                                         and (inventories.location_id = ?) 
                                         order by items.name', @id ]).paginate(:page => params[:page])
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data export_location(params[:id]), filename: "Items_at_"+ @location.name.gsub(/\s+/, "") + ".csv"  }
+      #format.xls { send_data @products.to_csv(col_sep: "\t") }
+    end
   end
 
   # GET /locations/new

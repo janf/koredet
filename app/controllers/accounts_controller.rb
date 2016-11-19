@@ -1,5 +1,7 @@
 class AccountsController < ApplicationController
 
+	include DataTransfer
+
 	before_action :authenticate_user!
 	before_action :set_account, only: [:show, :edit, :update, :invite_member]
 	  
@@ -63,10 +65,12 @@ class AccountsController < ApplicationController
 	end
 
 	def import_data
+		
 	end
 	
 	def export_data
-		
+		send_data export_all_locations, filename: "AllInventory.csv"  		
+		#redirect_to action: "show", notice: "Data exported"
 	end	
 
 

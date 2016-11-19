@@ -19,7 +19,14 @@
 </p> 
 
 
-<b>Inventory at location </b>
+<b>Inventory at location </b> 
+<p>
+  Download as:
+  <%= link_to "CSV", location_path(format: "csv") %> 
+  <% if false %>
+   | <%= link_to "Excel", location_path(format: "xls") %>
+  <% end %>
+</p>
 
 <table  class="table table-striped", style="width: auto; height: auto">
   <thead>
