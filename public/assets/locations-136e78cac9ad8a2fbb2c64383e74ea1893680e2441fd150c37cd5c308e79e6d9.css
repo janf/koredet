@@ -1,0 +1,30 @@
+/* line 5, /home/janfh/koredet/koredetweb/app/assets/stylesheets/locations.scss */
+.jstree-default a {
+  white-space: normal !important;
+  height: auto;
+}
+
+/* line 8, /home/janfh/koredet/koredetweb/app/assets/stylesheets/locations.scss */
+.jstree-anchor {
+  height: auto !important;
+}
+
+/* line 11, /home/janfh/koredet/koredetweb/app/assets/stylesheets/locations.scss */
+.jstree-default li > ins {
+  vertical-align: top;
+}
+
+/* line 14, /home/janfh/koredet/koredetweb/app/assets/stylesheets/locations.scss */
+.jstree-leaf {
+  height: auto;
+}
+
+/* line 17, /home/janfh/koredet/koredetweb/app/assets/stylesheets/locations.scss */
+.jstree-leaf a {
+  height: auto !important;
+}
+
+/* line 20, /home/janfh/koredet/koredetweb/app/assets/stylesheets/locations.scss */
+.jstree-node {
+  font-size: 14pt;
+}

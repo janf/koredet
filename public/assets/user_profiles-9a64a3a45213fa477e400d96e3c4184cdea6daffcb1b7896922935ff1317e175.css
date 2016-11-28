@@ -1,0 +1,8 @@
+/* line 5, /home/janfh/koredet/koredetweb/app/assets/stylesheets/user_profiles.scss */
+label {
+  width: 6em;
+  float: left;
+  text-align: right;
+  margin-right: 0.5em;
+  display: block;
+}
