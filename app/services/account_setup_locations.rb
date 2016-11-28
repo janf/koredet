@@ -4,7 +4,7 @@ class AccountSetupLocations
 	# Could later be replaced by a more configurable, data-driven appoach
 
 	def add_locations(account)
-		puts "AccountSetupLocations-add_item_types(account)"
+		# puts "AccountSetupLocations-add_item_types(account)"
 		locations = Location.where(account_id: account.id)
 		if locations.count == 0 
 			add_location("Items in", "Flow")

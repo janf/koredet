@@ -21,7 +21,7 @@ class AccountMailer < ApplicationMailer
 		
 		#puts "Sending mail to " + inv.to_email + "with URL: " + signup_url
 		mail(:to => inv.to_email, :subject => "You have been invited to create an account with Koredet")
-		puts "Sent mail to " + inv.to_email
+		# puts "Sent mail to " + inv.to_email
 	end
 
 

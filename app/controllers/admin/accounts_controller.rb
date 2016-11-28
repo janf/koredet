@@ -2,14 +2,14 @@ class Admin::AccountsController < ApplicationController
 	before_action :authenticate_user!
 	
 	def index 
-		puts "Admin::AccountsController#index"
+		# puts "Admin::AccountsController#index"
 		@accounts = Account.unscoped.all.order(account_name: :asc)
 		@users = User.unscoped.all.order(email: :asc)
 	  	@invitations = Invitation.unscoped.where(invitation_type: :new_account, status: :sent).order(to_email: :asc)
 	end
 
 	def show
-		puts "Account ID to show:" + params[:id].to_s
+		# puts "Account ID to show:" + params[:id].to_s
 		@account = Account.unscoped.find(params[:id])
 		@user_accounts = UserAccount.unscoped.where(account_id: params[:id])
 		@invitations = Invitation.unscoped.where(account_id: params[:id])
@@ -26,7 +26,7 @@ class Admin::AccountsController < ApplicationController
 
   	def invite_create_account
   		email = params[:email]
-		puts "Inviting: " + email
+		# puts "Inviting: " + email
 		# do something
 		
 		accinv = AccountInvitation.new(email, current_user.email)

@@ -34,7 +34,7 @@ class CartsController < ApplicationController
   # POST /carts
   # POST /carts.json
   def create
-    puts "***CartController#create****"
+    # puts "***CartController#create****"
     @cart = Cart.new(cart_params)
 
     respond_to do |format|

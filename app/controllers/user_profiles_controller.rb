@@ -99,7 +99,7 @@ class UserProfilesController < ApplicationController
 
     def create_user_account(account_id, is_admin)
       #See if relation already exists
-      puts "User.id: " + current_user.id.to_s + " , Account ID: " + account_id.to_s
+      # puts "User.id: " + current_user.id.to_s + " , Account ID: " + account_id.to_s
       exist_user_account = UserAccount.unscoped.where(user_id: current_user.id, account_id: account_id)
       if exist_user_account.length > 0 
          return false

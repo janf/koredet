@@ -21,7 +21,7 @@ class AccountSetupTransactionTypes
 
 			locations = Location.where(account_id: account.id, location_type: "Physical")
 
-			puts "Location count" + locations.count.to_s
+			# puts "Location count" + locations.count.to_s
 
 			locations.each do |loc|
 				if !(loc.default_item_type_id == nil)
@@ -67,7 +67,7 @@ class AccountSetupTransactionTypes
 
 		def find_location_id(location_name)
 			loc = Location.where(name: location_name).first
-			puts "find_location_id(location_name), found" + loc.name
+			# puts "find_location_id(location_name), found" + loc.name
 			loc.id
 		end	
 

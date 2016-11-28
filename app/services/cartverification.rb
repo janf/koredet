@@ -2,8 +2,8 @@ class Cartverification
 
 
   def verify(cart_params)
-    puts "Cartverification#verify"	
-    puts "Cart content: " + cart_params.to_yaml
+    # puts "Cartverification#verify"	
+    # puts "Cart content: " + cart_params.to_yaml
     
     # Set up processing of cart
 
@@ -42,7 +42,7 @@ class Cartverification
       # eliminate blank lines
       if line[:item_name] == "" then
         line[:_destroy] = "true"
-        puts "Destroy empty item"
+        # puts "Destroy empty item"
         next
       end    
 
@@ -56,15 +56,15 @@ class Cartverification
       
       if item.nil? then
         item_found = false
-        puts "New item - not saved" 
+        # puts "New item - not saved" 
         line[:status_code] = 'C'
         line[:status_text] = 'Item will be created'
       else if item.item_type_id == nil
-          puts "New item: " + item.name
+          # puts "New item: " + item.name
           line[:status_code] = 'C'
           line[:status_text] = 'Item will be created'
         else
-          puts "Existing item: " + item.name
+          # puts "Existing item: " + item.name
         end  
       end    
       
@@ -72,7 +72,7 @@ class Cartverification
         #find item id for lookup in inventory
         item = Item.where(name: line[:item_name]).first 
         item_id = item.id 
-        puts "Looked up item" + line[:item_name].to_s + ", found id " + item_id.to_s
+        # puts "Looked up item" + line[:item_name].to_s + ", found id " + item_id.to_s
         
         cart_line_qty = [1, line[:qty].to_i].max
         inventory = nil
@@ -82,20 +82,20 @@ class Cartverification
           arrival_date = ""
         end  
         if arrival_date == "" then
-          puts "No date specified, will use oldest inventory"
+          # puts "No date specified, will use oldest inventory"
           inventory = Inventory.where("location_id = ? and item_id = ?", from_location_id, item_id).order(arrival_date: :asc)
           inv = inventory.first
           #puts inv.to_yaml
           if inv.nil? then
-            puts "No inventory found"
+            # puts "No inventory found"
             line[:qty] = cart_line_qty.to_s
             line[:status_code] = 'D'
             line[:status_text] = 'No inventory found, this line will be discarded'
           else
             inv_qty = inv.qty.to_i
-            puts "Asked for " + cart_line_qty.to_s +   ", found  " + inv.qty.to_i.to_s + " items at arrival_date " + inv.arrival_date.to_s
+            # puts "Asked for " + cart_line_qty.to_s +   ", found  " + inv.qty.to_i.to_s + " items at arrival_date " + inv.arrival_date.to_s
             line[:arrival_date] = inv.arrival_date
-            puts "Setting arrival_date to " + line[:arrival_date].to_s
+            # puts "Setting arrival_date to " + line[:arrival_date].to_s
  
             # Chech for availability at date
             if inv_qty < line[:qty].to_i then
@@ -105,11 +105,11 @@ class Cartverification
             end   
           end        
         else  
-          puts "Arrival date: " + arrival_date 
+          # puts "Arrival date: " + arrival_date 
           inventory = Inventory.where("location_id = ? and item_id = ? and arrival_date = ?", from_location_id, item_id, arrival_date)
           inv = inventory.first
           if inv.nil? then
-            puts "No inventory found"
+            # puts "No inventory found"
             line[:status_code] = 'D'
             line[:status_text] = 'No inventory found, this line will be discarded'
           else
@@ -123,8 +123,8 @@ class Cartverification
         end
       end
     end
-    puts "Cart content after update: " + cart_params[:cart_items_attributes].to_yaml
-    puts "***Returning from Cartverification#verify"
+    # puts "Cart content after update: " + cart_params[:cart_items_attributes].to_yaml
+    # puts "***Returning from Cartverification#verify"
     cart_params
   end  
   

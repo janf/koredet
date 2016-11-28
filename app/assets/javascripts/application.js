@@ -11,16 +11,16 @@
 // about supported directives.
 //
 //
-//= require bootstrap
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
-//= require turbolinks
 //= require jquery-ui/autocomplete
 //= require autocomplete-rails
 //= require chartkick
 //= require jquery.fancytree-all
 //= require jquery.fancytree.dnd
 //= require jquery.ui-contextmenu
+//= require bootstrap
+//= require turbolinks
 //= require_tree .
 

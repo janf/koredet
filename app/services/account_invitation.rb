@@ -42,7 +42,7 @@ class AccountInvitation
     	inv.set_expiry_date
     	inv.generate_token
     	inv.save
-    	puts inv.to_yaml
+    	# puts inv.to_yaml
     	@inv = inv
 	end
 
@@ -54,7 +54,7 @@ class AccountInvitation
 		
 		@sup = signup_path
 
-		puts "Signup path: " +  @sup
+		# puts "Signup path: " +  @sup
 		if @inv.invitation_type == :member
 			AccountMailer.meber_invite_mail(@inv, @sup ).deliver_later
 		else

@@ -1,7 +1,7 @@
 def list_children(json, node)
-	puts node.name + " - "
+	# puts node.name + " - "
 	if node.ancestry.present?
-	 	puts "Ans: " + node.ancestry
+	 	# puts "Ans: " + node.ancestry
 	end
 	json.children node.children do |child|
    		json.partial! 'location_tree', loc: child

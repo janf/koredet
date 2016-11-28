@@ -30,7 +30,7 @@ class AccountsController < ApplicationController
 		@email = params[:email]
 		if @email.length > 0
 			
-			puts "Inviting: " + @email
+			# puts "Inviting: " + @email
 			
 			accinv = AccountInvitation.new(@email, current_user.email)
 

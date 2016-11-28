@@ -10,7 +10,7 @@ class LocationsController < ApplicationController
 
   def location_tree
     #@locations = Location.all
-    puts  "location_tree"
+    # puts  "location_tree"
     @locations = Location.where(ancestry: nil).order(location_type: :desc)
     #@locations = Location.where(id: 1)
   end

@@ -4,7 +4,7 @@ class AccountSetupItemTypes
 	# Could later be replaced by a more configurable, data-driven appoach
 
 	def add_item_types(account)
-		puts "AccountSetupItemTypes-add_item_types(account)"
+		# puts "AccountSetupItemTypes-add_item_types(account)"
 		item_types = ItemType.where(account_id: account.id)
 		if item_types.count == 0 
 			add_item_type_food
