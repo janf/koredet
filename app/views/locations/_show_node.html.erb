@@ -1,0 +1,14 @@
+<%= form_for @location, remote: true do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, disabled: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location_type %>
+    <%= f.text_field :location_type, disabled: true %>
+  </div>
+
+  <%= button_to "Show Inventory", '#', id: "show_inventory", remote: true, class: "btn btn-primary btn-xs" %>
+
+<% end %>

@@ -1,5 +1,11 @@
+function parse_text(text) {
+
+}
+
+
+
 function set_textfield_value(fld, txt) {
-   fld.attr("value", txt) 
+   fld.val(txt) 
 }
 
 
@@ -10,13 +16,14 @@ function  sayhello(fld) {
 
 function startspeech(lang, fld_text, fld_info) {
     var final_transcript = ""
+    var ignore_onend = false
     if (!('webkitSpeechRecognition' in window)) {
         set_textfield_value(fld_info, "Speech recognition not available");
         alert("No speech possible")
     } else {
         var recognition = new webkitSpeechRecognition();
         recognition.continuous = true;
-        recognition.interimResults = true;
+        recognition.interimResults = false;
       
         recognition.onstart = function() {
             recognizing = true;
@@ -48,24 +55,37 @@ function startspeech(lang, fld_text, fld_info) {
                 return;
             }
             if (!final_transcript) {
-                set_textfield_value(fld_info, 'info_start');
+                set_textfield_value(fld_info, '*** Press Speech input to add more item ***');
                 return;
             }
+            //alert("Speech recognition ended")
             set_textfield_value(fld_info, '');
         };
 
         recognition.onresult = function(event) {
             var interim_transcript = '';
+            
+            console.log("Events result length: " + event.results.length)
+
             for (var i = event.resultIndex; i < event.results.length; ++i) {
+                console.log("Processing event:" + i)
                 if (event.results[i].isFinal) {
                     final_transcript += event.results[i][0].transcript;
+                    set_textfield_value(fld_text, final_transcript);
+                    console.log("New final text: " + final_transcript)
+                    data = final_transcript
+                    var cust_event = new CustomEvent("new-text-available", { "detail": data });
+                    document.dispatchEvent(cust_event);
+                    final_transcript = ''
                 } else {
                     interim_transcript += event.results[i][0].transcript;
+                    console.log("New interim text: " + interim_transcript)
                 }
             }
-            set_textfield_value(fld_text, final_transcript);
         } 
         recognition.start();   
         
     };
 };
+
+

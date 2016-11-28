@@ -7,6 +7,14 @@ class LocationsController < ApplicationController
 
   # GET /locations
   # GET /locations.json
+
+  def location_tree
+    #@locations = Location.all
+    puts  "location_tree"
+    @locations = Location.where(ancestry: nil).order(location_type: :desc)
+    #@locations = Location.where(id: 1)
+  end
+
   def index
     @locations = Location.all.order(:name).paginate(:page => params[:page])
     #@locations = Location.roots
@@ -15,21 +23,36 @@ class LocationsController < ApplicationController
   # GET /locations/1
   # GET /locations/1.json
   def show
-  
-    @id = params[:id]
-    #@location = Location.find(params[:id])
-    @inventory = Inventory.find_by_sql(['select inventories.*, items.name 
-                                        from inventories, items 
-                                        where (inventories.item_id = items.id) 
-                                        and (inventories.location_id = ?) 
-                                        order by items.name', @id ]).paginate(:page => params[:page])
+
+    #@id = params[:id]
+    
+    # @inventory = Inventory.find_by_sql(['select inventories.*, items.name 
+    #                                     from inventories, items 
+    #                                     where (inventories.item_id = items.id) 
+    #                                     and (inventories.location_id = ?) 
+    #                                     order by items.name', @id ]).paginate(:page => params[:page])
+
+    @location = Location.find(params[:id])
 
     respond_to do |format|
       format.html
       format.csv { send_data export_location(params[:id]), filename: "Items_at_"+ @location.name.gsub(/\s+/, "") + ".csv"  }
+      format.js
       #format.xls { send_data @products.to_csv(col_sep: "\t") }
     end
   end
+
+  def show_inventory
+    @inventory = Inventory.find_by_sql(['select inventories.*, items.name 
+                                        from inventories, items 
+                                        where (inventories.item_id = items.id) 
+                                        and (inventories.location_id = ?) 
+                                        order by items.name', params[:id] ])
+    respond_to do |format|
+      format.js
+    end
+  end 
+
 
   # GET /locations/new
   def new
@@ -49,9 +72,11 @@ class LocationsController < ApplicationController
       if @location.save
         format.html { redirect_to @location, notice: 'Location was successfully created.' }
         format.json { render :show, status: :created, location: @location }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @location.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -63,9 +88,11 @@ class LocationsController < ApplicationController
       if @location.update(location_params)
         format.html { redirect_to @location, notice: 'Location was successfully updated.' }
         format.json { render :show, status: :ok, location: @location }
+        format.js {render :show }
       else
         format.html { render :edit }
         format.json { render json: @location.errors, status: :unprocessable_entity }
+        format.js {render :show }
       end
     end
   end
@@ -77,6 +104,7 @@ class LocationsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to locations_url, notice: 'Location was successfully destroyed.' }
       format.json { head :no_content }
+      format.js { head :no_content  }
     end
   end
 

@@ -48,8 +48,15 @@ Rails.application.routes.draw do
     end
     get :autocomplete_item_name, :on => :collection
   end 
-  resources :inventories
-  resources :locations
+
+  resources :inventories 
+  resources :locations do
+    get :location_tree, :on => :collection
+    member do
+      get :show_inventory
+    end
+  end
+  
   resources :items 
   resources :item_types
   resources :transactions

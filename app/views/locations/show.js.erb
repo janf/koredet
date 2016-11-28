@@ -1,0 +1,13 @@
+$(".edit_location").remove();
+$(".location_edit_form").remove();
+$("#new_location").remove()
+$("#location_inventory").remove();
+$('#node_edit_area').after('<%= j render("show_node") %>');
+
+$('#show_inventory').click(function(event){
+	//alert("Show inventory too");
+	node = $("#fancytree-container").fancytree("getActiveNode");
+	$.ajax({url: '/locations/'+node.key +"/show_inventory", format: "js", dataType: "script"});
+	event.preventDefault()
+});
+

@@ -4,9 +4,8 @@
   <%= f.date_field :arrival_date, size: 10  %>
   <%= f.hidden_field :_destroy %>
   <% if true %>
-  	<%= link_to "+", '#', class: "one_plus btn btn-primary btn-xs" %>
-	<%= link_to "-", '#', class: "one_minus btn btn-primary btn-xs" %>
+    <%= link_to "+", '#', class: "one_plus btn btn-primary btn-xs" %>
+	  <%= link_to "-", '#', class: "one_minus btn btn-primary btn-xs" %>
   <% end %>
-  <%= f.hidden_field :_destroy %>
   <%= link_to "remove", '#', class: "remove_fields btn btn-primary btn-xs" %>
  </fieldset>

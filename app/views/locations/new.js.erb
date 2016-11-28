@@ -1,0 +1,29 @@
+$(".edit_location").remove();
+//$("#new_location").remove();
+
+$('#node_edit_area').after('<%= j render("form") %>');
+//$('#new_link').hide();
+$('#node_edit_back').removeOnClick();
+$('#new_location').submit(function(event){
+
+	alert("parent_id")
+ 	var parent_id = $("#location_parent_id").val();
+ 	alert("parent_id: " + parent_id)
+
+ 	var parentnode = null;
+ 	if(parent_id) {
+ 		alert("Found parent id");
+		parentnode = $("#fancytree-container").fancytree().getNodeByKey(parent_id);
+ 	} else {
+ 		alert("New root node");
+		parentnode = $("#fancytree-container").fancytree("getRootNode");
+ 	};
+ 	alert(parentnode)
+	var node = parentnode.addChildren({
+        title: $("#location_name").val()
+    });
+    node.data.location_type = ("#location_type").val();
+
+ 	node.render();
+    return true; //submit form the normal way
+});

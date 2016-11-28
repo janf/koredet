@@ -2,6 +2,8 @@
 
 <h1>Locations</h1>
 
+
+<% if false %>
 <table  class="table table-striped", style="width: auto; height: auto">  <thead>
     <tr>
       <th>Id</th>
@@ -36,4 +38,27 @@
 <%= will_paginate @locations %>
 
 <%= button_to 'New Location', new_location_path, method: :get %>
+
+<% end %>
+
+<div class="container">
+    <div class="row">
+    <div class="col-sm-4">
+      <form id="search_form">
+        <input type="search" id="search-field" />
+        <button type="submit">Search</button>
+        <%= link_to "New location", new_location_path, id: "new_link",class: "btn btn-primary btn-xs", remote: true %>
+      </form>
+
+      <div id="fancytree-container"></div>
+      <%= button_to "Expand/Collapse", "#", id: "expand_tree", class: "btn btn-primary btn-xs", remote: true %>
+    
+    </div>    
+    <div class="col-sm-8">
+        <div id="node_edit_area"></div>
+        <div id="inventory_area"></div>
+     </div>
+  </div>
+</div>
+
 

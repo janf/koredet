@@ -9,22 +9,25 @@
 <% if current_user.current_account.present? %>
 
 
-	<% if @item_type_count == 0 %>
-		<li><%= link_to "No item types defined, go to item type" , :item_types    %></li>
+	<% if false %>
+		<% if @item_type_count == 0 %>
+			<li><%= link_to "No item types defined, go to item type" , :item_types    %></li>
+		<% end %>	
+
+		<% if @location_count == 0 %>
+			<li><%= link_to "No location defined, go to locations" , :locations    %></li>
+		<% end %>	
+
+		<% if @transaction_types.count == 0 %>
+			<li><%= link_to "No transaction types defined, goto transaction_types types" , :transaction_types    %></li>
+		<% end %>	
 	<% end %>	
 
-	<% if @location_count == 0 %>
-		<li><%= link_to "No location defined, go to locations" , :locations    %></li>
-	<% end %>	
-
-	<% if @transaction_types.count == 0 %>
-		<li><%= link_to "No transaction types defined, goto transaction_types types" , :transaction_types    %></li>
-	<% end %>	
 
 
 
 	<% if  @item_type_count == 0 || @location_count == 0 || @transaction_types.count == 0 %>
-		<h4><%= link_to "You can also use the account setup wizard" , account_setup_index_path	 %></h4>
+		<%= render "welcome_setup" %>
 	<% end %>	
 
 

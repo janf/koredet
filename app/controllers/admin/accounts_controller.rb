@@ -1,5 +1,6 @@
 class Admin::AccountsController < ApplicationController
-
+	before_action :authenticate_user!
+	
 	def index 
 		puts "Admin::AccountsController#index"
 		@accounts = Account.unscoped.all.order(account_name: :asc)

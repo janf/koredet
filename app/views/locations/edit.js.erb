@@ -1,0 +1,21 @@
+$(".edit_location").remove();
+$("#location_inventory").remove();
+//$("#new_location").remove();
+
+$('#node_edit_area').after('<%= j render("form") %>');
+//$('#new_link').hide();
+$('#node_edit_back').removeOnClick();
+$('.location_edit_form').submit(function(event){
+	// get node that is edited
+
+	node = $("#fancytree-container").fancytree("getActiveNode");
+	//alert(node);
+    node.setTitle($("#location_name").val());
+    node.data.location_type = $("#location_type").val()
+    //if($("#location_parent_id").val() != node.key )
+    //   targetNode = $("#fancytree-container").fancytree("getActiveNode");
+    //   moveTo(targetNode, mode, map)
+    node.render();
+    node.renderStatus();
+    return true; //submit form the normal way
+});

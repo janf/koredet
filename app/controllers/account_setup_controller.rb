@@ -1,9 +1,12 @@
 class AccountSetupController < ApplicationController
 	include Wicked::Wizard
 
+	before_action :authenticate_user!
+	before_action :set_account_setup_values
+
 	steps :overview, :set_name, :invite_members, :setup_item_types, :setup_locations, :setup_transactions, :show_summary
 
-	before_action :set_account_setup_values
+
 
 
 
@@ -26,20 +29,23 @@ class AccountSetupController < ApplicationController
 			account = current_user.current_account
 			accinv.create_member_invitation(account)
 			accinv.send_invitation(new_user_registration_path)
+			flash[:notice] =s 'New member invited.'
 		when :setup_item_types
 			asit = AccountSetupItemTypes.new()
 			asit.add_item_types(current_user.current_account)
+			flash[:notice] ='Standard item types successfully updated.'
 		when :setup_locations
 	    	asil = AccountSetupLocations.new()
 			asil.add_locations(current_user.current_account)
+			flash[:notice] ='Standard locations successfully updated.'
   		when :setup_transactions
   			asit = AccountSetupTransactionTypes.new()
   			asit.add_transaction_types(current_user.current_account)
+  			flash[:notice] ='Standard transactions successfully updated.'
   		end
 
-
-  		render_wizard
-  	end	
+  		render_wizard 
+   	end	
 
   	
    	private 

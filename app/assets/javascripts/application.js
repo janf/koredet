@@ -12,13 +12,15 @@
 //
 //
 //= require jquery
-//= require jquery-ui/button
-//= require jquery-ui/menu
+//= require jquery-ui
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery-ui/autocomplete
 //= require autocomplete-rails
 //= require bootstrap-sprockets
 //= require chartkick
+//= require jquery.fancytree-all
+//= require jquery.fancytree.dnd
+//= require jquery.ui-contextmenu
 //= require_tree .
 

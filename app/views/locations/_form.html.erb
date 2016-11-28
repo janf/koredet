@@ -1,10 +1,10 @@
-<%= form_for(location) do |f| %>
-  <% if location.errors.any? %>
+<%= form_for @location, :html => {class: "form-horizontal left location_edit_form" }, remote: true do |f| %>
+  <% if @location.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(location.errors.count, "error") %> prohibited this location from being saved:</h2>
+      <h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
 
       <ul>
-      <% location.errors.full_messages.each do |message| %>
+      <% @location.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -24,7 +24,7 @@
 
   <div class="field">
     <%= f.label :location_type %>
-    <%= f.select :location_type, ['Physical','Flow', 'Plan'] %>
+    <%= f.select :location_type, ['Physical','Flow'] %>
   </div>
 
   <div class="field">
@@ -32,8 +32,10 @@
     <%= f.collection_select( :default_item_type_id, ItemType.order(:name), :id, :name, include_blank: true ) %> 
   </div>
 
-
   <div class="actions">
     <%= f.submit %>
+    <%= button_tag "Back", type: "button", id: "node_edit_back" %>
   </div>
+ 
 <% end %>
+

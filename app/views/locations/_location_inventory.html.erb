@@ -1,0 +1,31 @@
+<div id="location_inventory">
+<b>Inventory at location </b> 
+<p>
+  Download as:
+  <%= link_to "CSV", location_path(format: "csv") %> 
+  <% if false %>
+   | <%= link_to "Excel", location_path(format: "xls") %>
+  <% end %>
+</p>
+
+<table  class="table table-striped", style="width: auto; height: auto">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Qty</th>
+      <th>Arrival date</th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+  	<% @inventory.each do |inventory| %>
+        <tr data-item-id=<%= "#{inventory.id}"%> class="item", height="10">
+    		  <td> <%= link_to inventory.item.name, inventory.item %></td>
+    		  <td> <%= inventory.qty.to_s %></td>
+          <td> <%= inventory.arrival_date %></td>
+    		<tr>
+  	<% end %>	
+  </tbody>
+</table>
+</div>
