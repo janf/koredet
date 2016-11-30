@@ -20,13 +20,17 @@ gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-gem "bootstrap-sass"
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
 gem 'rails-jquery-autocomplete'
+
+gem "bootstrap-sass"
+gem "bootstrap-table-rails"
+
 
 gem 'will_paginate', '~> 3.1.0'
 

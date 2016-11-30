@@ -21,6 +21,7 @@
 //= require jquery.fancytree.dnd
 //= require jquery.ui-contextmenu
 //= require bootstrap
+//= require bootstrap-table
 //= require turbolinks
 //= require_tree .
 
