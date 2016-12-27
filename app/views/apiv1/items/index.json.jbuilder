@@ -1,0 +1,1 @@
+json.array! @apiv1_items, partial: 'apiv1/items/apiv1_item', as: :apiv1_item

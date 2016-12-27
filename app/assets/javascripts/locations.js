@@ -123,6 +123,7 @@ function showLocationData(node) {
 	          {title: "Add child", cmd: "add_child", uiIcon: "ui-icon-scissors", disabled: false},
 	          {title: "Edit", cmd: "edit", uiIcon: "ui-icon-pencil", disabled: false },
 	          {title: "Delete", cmd: "delete", uiIcon: "ui-icon-trash", disabled: false }, 
+	          {title: "Show inventory", cmd: "edit", uiIcon: "ui-icon-folder-open", disabled: false }, 
 	          {title: "More", children: [
             		{title: "Do transactions", cmd: "trans"}
             	]}

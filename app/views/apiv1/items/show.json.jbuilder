@@ -1,0 +1,1 @@
+json.partial! "apiv1_items/apiv1_item", apiv1_item: @apiv1_item

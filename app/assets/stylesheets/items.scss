@@ -1,3 +1,14 @@
 // Place all the styles related to the Items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.item_edit_form
+{
+    float: left;
+    border: 1px solid white;
+    min-width: 770px;
+    padding: 2px;
+    margin: 0 auto;
+    padding-top: 2px;
+    text-align: left; /*add this;*/
+}

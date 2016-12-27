@@ -1,0 +1,26 @@
+{
+  "name": "koredetweb",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "index.js",
+  "dependencies": {
+    "react": "^15.4.1",
+    "react-bootstrap": "^0.30.7",
+    "react-bootstrap-table": "^2.8.0",
+    "react-dom": "^15.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janf/koredet.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/janf/koredet/issues"
+  },
+  "homepage": "https://github.com/janf/koredet#readme"
+}

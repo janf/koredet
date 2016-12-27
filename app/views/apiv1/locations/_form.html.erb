@@ -1,0 +1,17 @@
+<%= form_for(apiv1_location) do |f| %>
+  <% if apiv1_location.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(apiv1_location.errors.count, "error") %> prohibited this apiv1_location from being saved:</h2>
+
+      <ul>
+      <% apiv1_location.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

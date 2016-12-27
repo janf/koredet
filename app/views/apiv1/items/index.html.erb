@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Apiv1 Items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @apiv1_items.each do |apiv1_item| %>
+      <tr>
+        <td><%= link_to 'Show', apiv1_item %></td>
+        <td><%= link_to 'Edit', edit_apiv1_item_path(apiv1_item) %></td>
+        <td><%= link_to 'Destroy', apiv1_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Apiv1 Item', new_apiv1_item_path %>

@@ -1,0 +1,39 @@
+$('.fixed-table-toolbar').hide()
+$('#item_edit_area').after('<%= j render(partial: "form", locals: {item: @item}) %>');
+//$('#item_edit_back').removeItemOnClick();
+$('#item_edit_back').click(function(event) {
+	//alert("Clicked edit button");
+	$("#item_name").val("");
+	$("#item_description").val("");
+	$("#item_name").focus();
+	$bt = $('.bootstrap-table').first();
+	$bt.bootstrapTable('insertRow', {
+        index: 0,
+        row: {
+            type: 'X',
+            name: 'Y',
+            description: 'Z'
+            }
+    });
+});	
+
+$('#new_item').submit(function(event){
+
+	alert("submit")
+    $bt = $('.bootstrap-table').first();
+    $bt.bootstrapTable('insertRow', {
+        index: 1,
+        row: {
+            type: 'X',
+            name: 'Y',
+            description: 'Z'
+            }
+    });
+    event.preventDefault();
+    return false; 
+
+    $(".item_edit_form").remove();
+	$('.fixed-table-toolbar').show();
+ 	return true; //submit form the normal way
+});
+

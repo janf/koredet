@@ -9,6 +9,9 @@ gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
+
+gem 'thor', '0.19.1'
+
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -56,6 +59,12 @@ gem 'pundit'
 gem 'wicked'
 
 gem 'chartkick'
+
+gem "react_on_rails", "~> 6"
+
+#gem 'react-rails'
+
+#gem 'browserify-rails', '~> 3.4'
 
 #gem 'fancytree-rails'
 

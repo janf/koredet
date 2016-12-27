@@ -8,7 +8,11 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all.order(:name).where(item_type_id: params[:item_type_id]).paginate(:page => params[:page], :per_page => 15)
+    if params[:item_type_id] 
+      @items = Item.all.order(:name).where(item_type_id: params[:item_type_id]) # .paginate(:page => params[:page], :per_page => 15)
+    else
+      @items = Item.all
+    end  
   end
 
   # GET /items/1
@@ -19,7 +23,12 @@ class ItemsController < ApplicationController
 
   # GET /items/new
   def new
-    @item = Item.new(item_type_id: params[:item_type_id])
+    puts "Creating new item"
+    if params[:item_type_id] 
+      @item = Item.new(item_type_id: params[:item_type_id])
+    else
+      @item = Item.new
+    end
   end
 
   # GET /items/1/edit
@@ -36,9 +45,11 @@ class ItemsController < ApplicationController
       if @item.save
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
+        format.js { render json: nil, status: :ok }
       else
         format.html { render :new }
         format.json { render json: @item.errors, status: :unprocessable_entity }
+        format.js  { render json: nil, status: :ok }
       end
     end
   end

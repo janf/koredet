@@ -2,6 +2,37 @@
 
 <h1>Movement Types</h1>
 
+<div id="toolbar" class="btn-group">
+    <button type="button" class="btn btn-default">
+        <i class="glyphicon glyphicon-plus"></i>
+    </button>
+    <button type="button" class="btn btn-default">
+        <i class="glyphicon glyphicon-share-alt"></i>
+    </button>
+</div>
+<table data-toggle="table"
+       data-url="http://localhost:3000/transaction_types.json"
+       data-search="true"
+       data-show-refresh="true"
+       data-show-toggle="true"
+       data-show-columns="true"
+       data-click-to-select="true"
+       data-toolbar="#toolbar"
+       id="transaction_types_datatable">
+    <thead>
+    <tr>
+        <th data-field="state" data-checkbox="true"></th>
+        <th data-field="id">Id</th>
+        <th data-field="name">Name</th>
+        <th data-field="from_location">From location</th>
+        <th data-field="to_location">To location</th>
+    </tr>
+    </thead>
+</table>
+
+
+
+<% if false %>
 <table  class="table table-striped", style="width: auto; height: auto">
   <thead>
     <tr>
@@ -30,5 +61,6 @@
   </tbody>
 </table>
 
+<% end %>
 
 <%= button_to 'New Movement Type', new_transaction_type_path, method: :get %>

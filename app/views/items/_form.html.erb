@@ -1,4 +1,5 @@
-<%= form_for(item) do |f| %>
+<%= form_for item,  :html => {class: "form-inline left item_edit_form" }, remote: true do |f| %>
+
   <% if item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -11,34 +12,41 @@
     </div>
   <% end %>
   <b>
-
+  Add item
   </b>  
-  <p></p>
-
-  <div class="field">
-    <%= f.label :item_type_id %>
-    <%= f.collection_select( :item_type_id, ItemType.all.order(:name), :id, :name  ) %>
-  </div>
+  <fieldset class="form-inline">
+    <div class="field form-control">
+      <%= f.collection_select( :item_type_id, ItemType.all.order(:name), :id, :name  ) %>
+    </div>
 
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+    <div class="field form-control">
+      <%= f.text_field :name, placeholder: "Name" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_field :description %>
-  </div>
- 
-  <%= f.fields_for :properties, OpenStruct.new(@item.properties) do |builder| %>
-    <% @item.item_type.fields.each do |field| %>
-      <%= render "items/fields/#{field.field_type}", field: field, f: builder %>
+    <div class="field form-control">
+      <%= f.text_field :description, placeholder: "Description" %>
+    </div>
+   
+    <% if false %>
+      <%= f.label :item_type_id %>
+      <%= f.label :name %>
+      <%= f.label :description %>
+      
+
+      <%= f.fields_for :properties, OpenStruct.new(@item.properties) do |builder| %>
+        <% @item.item_type.fields.each do |field| %>
+          <%= render "items/fields/#{field.field_type}", field: field, f: builder %>
+        <% end %>
+      <% end %>
     <% end %>
-  <% end %>
 
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions form-control">
+      <%= button_tag "Add", type: "button", id: "item_edit_back" %>
+      <%= button_tag "Add and close", type: "button", id: "item_edit_back" %>
+      <%= button_tag "Close", type: "button", id: "item_edit_back" %>
+    </div>
+  </fieldset>
+  
 <% end %>

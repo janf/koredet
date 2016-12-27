@@ -1,0 +1,1 @@
+json.partial! "apiv1_locations/apiv1_location", apiv1_location: @apiv1_location

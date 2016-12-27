@@ -15,6 +15,14 @@ Rails.application.routes.draw do
     resources :accounts, only: [:index, :show]
   end
 
+  namespace :apiv1 do
+    get 'auth/gettoken'
+    get 'auth/renewtoken'
+    get 'auth/verifytoken'
+    resources :locations
+    resources :items
+  end
+
   resource :user_profiles, only: [:edit, :show, :update] do
     member do
       put :member_invitation

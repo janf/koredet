@@ -1,0 +1,94 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Items</h1>
+
+<div id="toolbar" class="btn-group">
+    <button type="button" class="btn btn-default" id="btn-add-item">
+        <i class="glyphicon glyphicon-plus"></i>
+    </button>
+    <button type="button" class="btn btn-default" id="btn-move-item">
+        <i class="glyphicon glyphicon-share-alt"></i>
+    </button>
+</div>
+
+<div id="item_edit_area"></div>
+
+<table data-toggle="table"
+       data-url="http://localhost:3000/items.json"
+       data-search="true"
+       data-show-refresh="true"
+       data-show-toggle="true"
+       data-show-columns="true"
+       data-click-to-select="true"
+       data-pagination = "True"
+       data-toolbar="#toolbar"
+       id="items_datatable" >
+    <thead>
+    <tr>
+        <th data-field="state" data-checkbox="true"></th>
+        <th data-field="id" data-sortable="true">Id</th>
+        <th data-field="item_type" data-sortable="true" data-editable="true">Type</th>
+        <th data-field="name" data-sortable="true" data-editable="true">Name</th>
+        <th data-field="description" data-editable="true">Description</th>
+    </tr>
+    </thead>
+</table>
+
+
+
+
+
+<% if false %>
+<p><%= link_to "Advanced Search", new_item_search_path %></p>
+
+
+<%= form_tag items_path, method: :get do %>
+  <%= select_tag :item_type_id, options_from_collection_for_select(ItemType.all, :id, :name, params[:item_type_id]) %>
+  <%= submit_tag "Search", name: nil %>
+<% end %>
+<br>
+
+<% if params[:item_type_id].present? %>
+  <%= form_tag new_item_path, method: :get do %>
+    <%= hidden_field_tag :item_type_id, params[:item_type_id] %>
+    <%= submit_tag "New item", name: nil %>
+  <% end %>
+<% end %>  
+
+
+
+
+<table  class="table table-striped", style="width: auto; height: auto">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Created at</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= link_to item.name, item_path(item) %></td>
+        <td><%= item.description %></td>
+        <td><%= item.created_at %></td>
+        <td>
+          <%= link_to 'Edit', edit_item_path(item) %>
+          <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <td>  
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if false %>
+  <%= will_paginate @items %>
+<% end %>
+
+<br><br>
+
+<% end %>
+
+
