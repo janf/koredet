@@ -8,11 +8,8 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    if params[:item_type_id] 
-      @items = Item.all.order(:name).where(item_type_id: params[:item_type_id]) # .paginate(:page => params[:page], :per_page => 15)
-    else
       @items = Item.all
-    end  
+      @item_types = ItemType.all
   end
 
   # GET /items/1

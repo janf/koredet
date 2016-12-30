@@ -1,3 +1,5 @@
+//= require webpack-bundle
+
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -23,8 +25,5 @@
 //= require bootstrap
 //= require bootstrap-table
 //= require turbolinks
-//= require react
-//= require react_ujs
-//= require components
 //= require_tree .
 

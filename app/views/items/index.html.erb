@@ -1,3 +1,1 @@
-  <h3> I'm a rails view</h3>
-  
-  <%= react_component 'Items', { data: @items, authenticity_token: form_authenticity_token } %>
+ <%= react_component( "Items",  props: {data: @items, item_types: @item_types, authenticity_token: form_authenticity_token}  ) %>

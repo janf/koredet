@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"bootst",
+				"react-bootstrap-table"
+			],
+			[
 				"final",
 				"final_transcript"
 			],
@@ -239,6 +243,139 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "/home/janfh/Projects/ReactRailsDemo/app/views/records/index.html.erb",
+			"settings":
+			{
+				"buffer_size": 173,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/items/index.html.erb",
+			"settings":
+			{
+				"buffer_size": 104,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "client/app/bundles/Items/components/Items.jsx",
+			"settings":
+			{
+				"buffer_size": 3243,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "config/boot.rb",
+			"settings":
+			{
+				"buffer_size": 128,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Procfile.dev",
+			"settings":
+			{
+				"buffer_size": 129,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "client/package.json",
+			"settings":
+			{
+				"buffer_size": 978,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "import React from 'react';\n\nexport default class Item extends React.Component {\n\tconstructor(props) {\n    \tsuper(props);\n    \tthis.state = {title: 'Hello',\n    \t\t\t\t  date: 'Today',\n    \t\t\t\t  amount: 1,\n    \t\t\t\t  addrecord: false };\n\n    \tthis.handleTitleChange = this.handleTitleChange.bind(this);\n    \tthis.handleDateChange = this.handleDateChange.bind(this);\n    \tthis.handleAmountChange = this.handleAmountChange.bind(this);\n    \tthis.handleSubmit = this.handleSubmit.bind(this)\n    \tthis.handleExit = this.handleExit.bind(this)\n\t};\n\n\thandleTitleChange(e) {\n\t\tconsole.log(\"Title changed\");\n\t\tthis.setState({ title: e.target.value });\n\t}\n\n\thandleDateChange(e) {\n\t\tconsole.log(\"Date changed -\");\n\t\tthis.setState({ date: e.target.value });\n\t}\n\n\thandleAmountChange(e) {\n\t\tconsole.log(\"Amount changed -\");\n\t\tthis.setState({ amount: e.target.value });\n\t}\n\n\thandleSubmit(e) {\n\t\tconsole.log(\"Pressed submit, button: \" + e.value);\n\t\tconsole.log(\"Should update record\");\n\t\tpayload = { record:  \n\t\t\t\t \t\t{title: this.state.title,\n\t\t\t\t\t\tdate: this.state.date,\n\t\t\t\t\t\tamount: this.state.amount} };\n\t\tthis.props.onEditEvent(\"add\", payload);\t\t\n\t\te.preventDefault();\n\t}\n\n\thandleExit(e) {\n\t\tconsole.log(\"Pressed exit\");\n\t\tconsole.log(\"Should notify parent about event\");\n\t\tthis.props.onEditEvent(\"exit\");\n\t\te.preventDefault();\n\t}\n\n\n\trender() {\n    \t return (\n    \t  \t\t<form className=\"form-inline\"  method=\"post\" onSubmit={this.handleSubmit}>\n     \t\t\t\t<div className=\"form-group\"> \n     \t\t\t\t    <label>\n\t\t\t\t\t    \tTitle:\n\t\t\t\t\t    \t<input type=\"text\" name=\"title\" value={this.state.title} onChange={this.handleTitleChange} />\n\t\t\t\t\t    </label>\n\t\t\t\t\t    <label>\n\t\t\t\t\t    \tDate:\n\t\t\t\t\t    \t<input type=\"text\"  name=\"date\" value={this.state.date} onChange={this.handleDateChange} />\n\t\t\t\t\t    </label>\n\t\t\t\t\t    <label>\n\t\t\t\t\t    \tAmount:\n\t\t\t\t\t    \t<input type=\"text\"  name=\"amount\" value={this.state.amount} onChange={this.handleAmountChange} />\n\t\t\t\t\t    </label>\n\t\t\t\t\t    <input type='hidden' name='authenticity_token' value={this.props.authenticity_token} />\n\t\t\t\t\t    <input type=\"submit\" value=\"Add\" className=\"btn-xs btn-primary\" id=\"submit\"/>\n\t\t\t\t\t    <button id=\"exit\" className=\"btn-xs btn-warning\" onClick={this.handleExit}>Exit</button>\n     \t\t\t\t</div>\n      \t\t\t</form>\n    \t );\n  \t};\n \n  \t\n};\n\n",
+			"file": "client/app/bundles/Items/components/Item.jsx",
+			"file_size": 2281,
+			"file_write_time": 131273358184790438,
+			"settings":
+			{
+				"buffer_size": 2280,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "config/initializers/npm.rb",
+			"settings":
+			{
+				"buffer_size": 66,
+				"encoding": "UTF-8",
+				"line_ending": "Unix",
+				"name": "system 'npm install' if Rails.env.development? ||"
+			}
+		},
+		{
+			"file": "/home/janfh/koredet/koredetmobile/README.md",
+			"settings":
+			{
+				"buffer_size": 42,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/assets/javascripts/locations.js",
+			"settings":
+			{
+				"buffer_size": 8738,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": ".gitignore",
+			"settings":
+			{
+				"buffer_size": 1607,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Gemfile",
+			"settings":
+			{
+				"buffer_size": 2232,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/assets/stylesheets/application.css.scss",
+			"settings":
+			{
+				"buffer_size": 907,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/controllers/apiv1/auth_controller.rb",
+			"settings":
+			{
+				"buffer_size": 163,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/controllers/apiv1/items_controller.rb",
+			"settings":
+			{
+				"buffer_size": 1959,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -281,31 +418,66 @@
 	"expanded_folders":
 	[
 		"/home/janfh/koredet/koredetweb",
-		"/home/janfh/koredet/koredetweb/app",
-		"/home/janfh/koredet/koredetweb/app/assets",
+		"/home/janfh/koredet/koredetweb/app/assets/config",
+		"/home/janfh/koredet/koredetweb/app/assets/images",
 		"/home/janfh/koredet/koredetweb/app/assets/javascripts",
+		"/home/janfh/koredet/koredetweb/app/assets/javascripts/components",
+		"/home/janfh/koredet/koredetweb/app/assets/stylesheets",
 		"/home/janfh/koredet/koredetweb/app/channels",
 		"/home/janfh/koredet/koredetweb/app/controllers",
-		"/home/janfh/koredet/koredetweb/app/models",
+		"/home/janfh/koredet/koredetweb/app/controllers/apiv1",
 		"/home/janfh/koredet/koredetweb/app/views",
+		"/home/janfh/koredet/koredetweb/app/views/apiv1/items",
+		"/home/janfh/koredet/koredetweb/app/views/apiv1/locations",
+		"/home/janfh/koredet/koredetweb/app/views/hello_world",
 		"/home/janfh/koredet/koredetweb/app/views/item_searches",
 		"/home/janfh/koredet/koredetweb/app/views/items",
+		"/home/janfh/koredet/koredetweb/app/views/items/fields",
+		"/home/janfh/koredet/koredetweb/app/views/items/old",
 		"/home/janfh/koredet/koredetweb/app/views/layouts",
 		"/home/janfh/koredet/koredetweb/app/views/locations",
 		"/home/janfh/koredet/koredetweb/app/views/transaction_types",
 		"/home/janfh/koredet/koredetweb/app/views/transactions",
 		"/home/janfh/koredet/koredetweb/app/views/user_profiles",
 		"/home/janfh/koredet/koredetweb/app/views/users",
+		"/home/janfh/koredet/koredetweb/client",
+		"/home/janfh/koredet/koredetweb/client/app/bundles",
+		"/home/janfh/koredet/koredetweb/client/app/bundles/Items",
+		"/home/janfh/koredet/koredetweb/client/app/bundles/Items/components",
+		"/home/janfh/koredet/koredetweb/client/app/lib",
+		"/home/janfh/koredet/koredetweb/client/node_modules",
 		"/home/janfh/koredet/koredetweb/config",
-		"/home/janfh/koredet/koredetweb/config/environments",
-		"/home/janfh/koredet/koredetweb/config/initializers",
 		"/home/janfh/koredet/koredetweb/db",
+		"/home/janfh/koredet/koredetweb/vendor",
 		"/home/janfh/koredet/koredetweb/vendor/assets",
-		"/home/janfh/koredet/koredetweb/vendor/assets/javascripts",
-		"/home/janfh/koredet/koredetweb/vendor/assets/stylesheets"
+		"/home/janfh/koredet/koredetweb/vendor/assets/stylesheets/extensions"
 	],
 	"file_history":
 	[
+		"/home/janfh/koredet/koredetweb/client/webpack.config.js",
+		"/home/janfh/koredet/koredetweb/client/REACT_ON_RAILS_CLIENT_README.md",
+		"/home/janfh/koredet/koredetweb/client/package.json",
+		"/home/janfh/koredet/koredetweb/app/assets/javascripts/components/items.js.jsx",
+		"/home/janfh/koredet/koredetweb/config/routes.rb",
+		"/home/janfh/koredet/koredetweb/config/application.rb",
+		"/home/janfh/koredet/koredetweb/app/assets/javascripts/application.js",
+		"/home/janfh/koredet/koredetweb/client/app/bundles/HelloWorld/startup/registration.jsx",
+		"/home/janfh/koredet/koredetweb/node_modules/react-bootstrap-table/package.json",
+		"/home/janfh/koredet/koredetweb/client/app/bundles/HelloWorld/components/HelloWorld.jsx",
+		"/home/janfh/koredet/koredetweb/app/controllers/hello_world_controller.rb",
+		"/home/janfh/koredet/koredetweb/config/initializers/assets.rb",
+		"/home/janfh/koredet/koredetweb/config/initializers/react_on_rails.rb",
+		"/home/janfh/koredet/koredetweb/client/app/bundles/Items/startup/registration.jsx",
+		"/home/janfh/koredet/koredetweb/node_modules/react-bootstrap-table/README.md",
+		"/home/janfh/Projects/ReactRailsDemo/app/assets/javascripts/components/records.js.jsx",
+		"/home/janfh/koredet/koredetweb/app/views/apiv1/items/_apiv1_item.json.jbuilder",
+		"/home/janfh/koredet/koredetweb/app/views/apiv1/locations/_apiv1_location.json.jbuilder",
+		"/home/janfh/koredet/koredetweb/db/schema.rb",
+		"/home/janfh/koredet/koredetweb/app/controllers/apiv1/locations_controller.rb",
+		"/home/janfh/koredet/koredetweb/app/views/apiv1/locations/index.json.jbuilder",
+		"/home/janfh/koredet/koredetweb/app/views/items/index.html.erb",
+		"/home/janfh/koredet/koredetweb/app/views/apiv1/items/index.json.jbuilder",
+		"/home/janfh/Projects/ReactRailsDemo/config/routes.rb",
 		"/home/janfh/koredet/koredetweb/app/views/locations/new.js.erb",
 		"/home/janfh/koredet/koredetweb/app/views/items/new.js.erb",
 		"/home/janfh/koredet/koredetweb/app/views/locations/_form.html.erb",
@@ -313,15 +485,12 @@
 		"/home/janfh/koredet/koredetweb/app/assets/javascripts/items.js",
 		"/home/janfh/koredet/koredetweb/app/assets/javascripts/locations.js",
 		"/home/janfh/koredet/koredetweb/app/views/items/_item.json.jbuilder",
-		"/home/janfh/koredet/koredetweb/db/schema.rb",
-		"/home/janfh/koredet/koredetweb/app/views/items/index.html.erb",
 		"/home/janfh/koredet/koredetweb/app/controllers/items_controller.rb",
 		"/home/janfh/koredet/koredetweb/app/assets/javascripts/transaction_types.js",
 		"/home/janfh/koredet/koredetweb/app/views/transaction_types/index.html.erb",
 		"/home/janfh/koredet/koredetweb/app/views/transaction_types/_transaction_type.json.jbuilder",
 		"/home/janfh/koredet/koredetweb/app/assets/javascripts/items.coffee",
 		"/home/janfh/koredet/koredetweb/app/assets/stylesheets/application.css.scss",
-		"/home/janfh/koredet/koredetweb/app/assets/javascripts/application.js",
 		"/home/janfh/koredet/koredetweb/Gemfile",
 		"/home/janfh/koredet/koredetweb/app/controllers/transaction_types_controller.rb",
 		"/home/janfh/koredet/koredetweb/app/assets/stylesheets/inventories.scss",
@@ -349,7 +518,6 @@
 		"/home/janfh/koredet/koredetweb/app/controllers/accounts_controller.rb",
 		"/home/janfh/koredet/koredetweb/app/views/locations/edit.js.erb",
 		"/home/janfh/koredet/koredetweb/app/assets/stylesheets/locations.scss",
-		"/home/janfh/koredet/koredetweb/config/initializers/assets.rb",
 		"/home/janfh/koredet/koredetweb/.gitignore",
 		"/home/janfh/koredet/koredetweb/.env",
 		"/home/janfh/koredet/koredetweb/Rakefile",
@@ -358,7 +526,6 @@
 		"/home/janfh/koredet/koredetweb/app/views/locations/show_inventory.js.erb",
 		"/home/janfh/koredet/koredetweb/app/views/locations/index.html.erb",
 		"/home/janfh/koredet/koredetweb/app/views/locations/_show_node.html.erb",
-		"/home/janfh/koredet/koredetweb/config/routes.rb",
 		"/home/janfh/koredet/koredetweb/app/views/locations/_location_tree.json.jbuilder",
 		"/home/janfh/koredet/koredetweb/app/views/carts/_cart_item_fields.html.erb",
 		"/home/janfh/koredet/koredetweb/app/assets/javascripts/locations.coffee.old",
@@ -414,26 +581,7 @@
 		"/home/janfh/koredet/KoredetRN/KoredetRN/android/gradle/wrapper/gradle-wrapper.properties",
 		"/home/janfh/koredet/KoredetRN/KoredetRN/android/settings.gradle",
 		"/home/janfh/koredet/KoredetRN/KoredetRN/android/gradle.properties",
-		"/home/janfh/.bashrc",
-		"/home/janfh/.pgadmin/storage/janfredrik/Firstbackup",
-		"/usr/share/applications/PGAdmin4.desktop",
-		"/home/janfh/koredet/koredetweb/app/views/admin/admin_accounts/index.html.erb",
-		"/home/janfh/koredet/koredetweb/app/views/admin/accounts/_invitations.html.erb",
-		"/home/janfh/koredet/koredetweb/app/views/admin/admin_accounts/_all_accounts.html.erb",
-		"/home/janfh/koredet/koredetweb/app/assets/stylesheets/systems.scss",
-		"/home/janfh/koredet/koredetweb/app/assets/stylesheets/systems_controller.scss",
-		"/home/janfh/koredet/koredetweb/app/views/carts/show.html.erb",
-		"/home/janfh/koredet/koredetweb/app/helpers/account_helper.rb",
-		"/home/janfh/koredet/koredetweb/app/views/admin/system/system.html.erb",
-		"/home/janfh/koredet/koredetweb/gemfile",
-		"/home/janfh/koredet/koredetweb/app/controllers/admin/system_controller.rb",
-		"/home/janfh/koredet/koredetweb/app/views/system/show.html.erb",
-		"/home/janfh/koredet/koredetweb/app/views/system/_all_accounts.html.erb",
-		"/home/janfh/koredet/koredetweb/app/views/layouts/_header.html.erb",
-		"/home/janfh/koredet/koredetweb/app/views/system/_all_users.html.erb",
-		"/home/janfh/koredet/koredetweb/app/views/system/_invitations.html.erb",
-		"/home/janfh/koredet/koredetweb/app/controllers/system_controller.rb",
-		"/home/janfh/koredet/koredetweb/app/controllers/item_types_controller.rb"
+		"/home/janfh/.bashrc"
 	],
 	"find":
 	{
@@ -454,6 +602,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"thor",
+			"Apiv1::Location",
 			"location_tree",
 			"puts",
 			"console.log",
@@ -526,8 +676,439 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/home/janfh/Projects/ReactRailsDemo/app/views/records/index.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 173,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								42,
+								42
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/views/items/index.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 104,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "client/app/bundles/Items/components/Items.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3243,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2570,
+								2570
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 469.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "config/boot.rb",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 128,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "Procfile.dev",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 129,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								38,
+								38
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "client/package.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 978,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								900,
+								900
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "client/app/bundles/Items/components/Item.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2280,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								27,
+								27
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 714.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "config/initializers/npm.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 66,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								66,
+								66
+							]
+						],
+						"settings":
+						{
+							"auto_name": "system 'npm install' if Rails.env.development? ||",
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/home/janfh/koredet/koredetmobile/README.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 42,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								42,
+								42
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "app/assets/javascripts/locations.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8738,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4947,
+								4947
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4199.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": ".gitignore",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1607,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "Gemfile",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2232,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								528,
+								528
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1173.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "app/assets/stylesheets/application.css.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 907,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								828,
+								828
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "app/controllers/apiv1/auth_controller.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 163,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "app/controllers/apiv1/items_controller.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1959,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1931,
+								1931
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 551.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				}
 			]
 		}
 	],
