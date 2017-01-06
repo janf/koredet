@@ -5,15 +5,19 @@ import Item  from './Item';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import Select from 'react-select';
 import moment from 'moment';
-
+import { post, update, delete_ } from '../../../lib/railsclient';
+import ImageEditor from './ImageEditor'
 
 export default class Items extends React.Component {
 
 	constructor(props) {
 		super(props);
-    this.state = {editmode: "hidden", recordkey: "", data: props.data};
+    this.state = {editmode: "hidden", recordkey: "", data: props.data, select_value: []};
     this.handleAddRecord = this.handleAddRecord.bind(this);
     this.itemTypeFormatter = this.itemTypeFormatter.bind(this);
+    this.handleInsertedRow = this.handleInsertedRow.bind(this);
+    this.handleEditCell = this.handleEditCell.bind(this);
+    this.handleDeleteRow = this.handleDeleteRow.bind(this);
     //this.handleEditEvent = this.handleEditEvent.bind(this);
 	};
 
@@ -21,43 +25,25 @@ export default class Items extends React.Component {
      this.setState({editmode: "new"});
   }
 
-  // handleEditEvent(app_event, payload) {
-  //   if(app_event == "exit") {
-  //     this.setState({editmode: "hidden", recordkey: ""})   
-  //   } else if(app_event == "add") {
-  //       console.log("Will save data: " + JSON.stringify(payload, null, "\t") );
-  //        $.ajax({
-  //          data: payload,
-  //          url: "/records",
-  //          type: "POST",
-  //          dataType: "json",
-  //          success: data => {
-  //            this.setState({data: this.state.data.concat(data) });
-  //          }})
-  //   } else if(app_event == "delete") {
-  //     console.log("Will delete data: " + JSON.stringify(payload, null, "\t") );
-  //     $.ajax({
-  //          data: payload,
-  //          url: "/records/"+ payload.id,
-  //          type: "DELETE",
-  //          dataType: "json",
-  //          success: data => {
-  //           console.log("Delete succedeed");
-  //           const deleted_id = parseInt(payload.id,10);
-  //           this.setState({data: this.state.data.filter(({ id }) => id !== deleted_id)});
-  //          }})
+  handleInsertedRow(row) {
+     console.log("Inserting ", row );
+     const payload = {item: {...row}, authenticity_token: this.props.authenticity_token};
+     delete payload.item.id;
+     console.log("Payload", payload);
+     post("/items", payload).then(ret => this.setState({
+      ...this.state,
+      data: [].concat(this.state.data, [ret])
+     }));
+  }
 
-  //   } else if(app_event == "edit"){
-  //     console.log("Start edit data: " + JSON.stringify(payload, null, "\t") );
-  //     this.setState({editmode: "edit", recordkey: payload.id})
-  //     //console.log("handleEditEvent: " + app_event);
-  //   } else if(app_event == "save") {
-  //       console.log("Saving data: " + JSON.stringify(payload, null, "\t") );
-  //       this.setState({editmode: "hiddden", recordkey: ""});
-  //   }
+  handleEditCell(row, name, value) {
+    update("/items/", row, this.props.authenticity_token).then(console.log);
+  }
 
-
-  // }
+  handleDeleteRow(rowKeys) {
+    Promise.all(rowKeys.map(it => delete_("/items/", it, this.props.authenticity_token)))
+      .then(rows => console.log(`Deleted ${rows.length} objects`));
+  }
   
   dateFormatter(cell, row){
       //return cell;
@@ -69,6 +55,8 @@ export default class Items extends React.Component {
       const id = parseInt(cell);
       return this.props.item_types.filter(it => it.id === id)[0].name;
   }
+
+
 
  
 	render() {
@@ -84,7 +72,8 @@ export default class Items extends React.Component {
 
       const cellEditProp = {
         mode: 'dbclick',
-        blurToSave: true
+        blurToSave: true,
+        afterSaveCell: this.handleEditCell,
       };
 
       const selectRowProp = {
@@ -97,60 +86,90 @@ export default class Items extends React.Component {
         return enumObject[cell];
       }
 
+      function imageFormatter(cell, row){
+        if(cell == null) 
+          cell = "/assets/add_picture.png";
+        return (<img style={{width:25}} src={cell}/>)
+      }
+
+      const createImageEditor = (onUpdate, props) => (<ImageEditor onUpdate={ onUpdate } {...props}/>);
+
       const options = {
+        clearSearch: true,
+
         page: 1,  // which page you want to show as default
         sizePerPageList: [ {
           text: '10', value: 10
-        }, {
+        },{
+          text: '15', value: 15
+        },{
           text: '20', value: 20
         }, {
           text: 'All', value: this.state.data.length
         } ], // you can change the dropdown list for size per page
-        sizePerPage: 20,  // which size per page you want to locate as default
+        sizePerPage: 15,  // which size per page you want to locate as default
         pageStartIndex: 1, // where to start counting the pages
         paginationSize: 5,  // the pagination bar size.
         prePage: 'Prev', // Previous page button text
         nextPage: 'Next', // Next page button text
         firstPage: 'First', // First page button text
         lastPage: 'Last', // Last page button text
-        paginationShowsTotal: this.renderShowsTotal  // Accept bool or function
+        paginationShowsTotal: this.renderShowsTotal,  // Accept bool or function
         // hideSizePerPage: true > You can hide the dropdown for sizePerPage
+
+        afterInsertRow: this.handleInsertedRow,
+        afterDeleteRow: this.handleDeleteRow,
       };
 
-      var select_options = [
+      var  select_options = [
         { value: 'one', label: 'One' },
         { value: 'two', label: 'Two' }
       ];
 
-      function logChange(val) {
-        console.log("Selected: " + val);
+      var select_options_it =   this.props.item_types.map(it => ( {value: it.id, label: it.name}));
+      
+
+      const logChange = val => {
+        this.setState({...this.state, select_value: val})
+        console.log("Selected: ", val) ;
       }
    
+      //console.log(select_options_it); 
+      //<TableHeaderColumn datafield="image_url" dataFormat={imageFormatter} 
+      //              customEditor={ { getElement: createImageEditor } }>Image</TableHeaderColumn>
 
+      // filter data
+      const selected_item_types = this.state.select_value.map(it => it.value);
+
+      const filtered_data = selected_item_types.length > 0 ? this.state.data.filter(it => selected_item_types.includes(it.item_type_id)) : this.state.data;
 
     	return (
     	 		<div className="Items col-md-8">
             <h2>Items</h2>
-            <Select
+            <Select.Creatable
               name="item-type-select"
+              multi
               width="50"
               value="one"
-              options={  this.props.item_types }
+              value={this.state.select_value}
+              options={  select_options_it }
               onChange={logChange}
             />
          
-       	    <BootstrapTable data={this.state.data} 
+       	    <BootstrapTable data={filtered_data} 
                     exportCSV striped cellEdit={ cellEditProp } hover condensed 
                     search insertRow deleteRow selectRow={ selectRowProp } 
                     pagination options={ options }>
-               <TableHeaderColumn dataField="id" isKey dataAlign="center" width="50" dataSort editable={false}>Item Id</TableHeaderColumn>
+               <TableHeaderColumn dataField="id" isKey  autoValue dataAlign="center" hidden width="50" dataSort editable={false}>Item Id</TableHeaderColumn>
+               <TableHeaderColumn datafield="image_url" dataFormat={imageFormatter} 
+                    customEditor={ { getElement: createImageEditor } }>Image</TableHeaderColumn>
                <TableHeaderColumn dataField="item_type_id" width="150" dataSort  dataFormat={ this.itemTypeFormatter } 
                                   filterFormatted dataFormat={ enumFormatter } editable={ { type: 'select', options: { values: this.props.item_types.map(it => it.id) } } }
-                formatExtraData={ itemType } filter={ { type: 'SelectFilter', options: itemType }  }>
+                formatExtraData={ itemType } csvHeader='item_type'csvFormat={ this.itemTypeFormatter }>
                Item Type</TableHeaderColumn>
                <TableHeaderColumn dataField="name" width="150" dataSort >Item Name</TableHeaderColumn>
                <TableHeaderColumn dataField="description" width="150">Item Description</TableHeaderColumn>
-               <TableHeaderColumn dataField="created_at" width="150" dataFormat={ this.dateFormatter } dataSort editable={false} >Create date</TableHeaderColumn>
+               <TableHeaderColumn dataField="created_at" width="150" dataFormat={ this.dateFormatter } dataSort editable={false} >Created at</TableHeaderColumn>
              </BootstrapTable>
           </div>
   	   );

@@ -33,7 +33,10 @@
     "react-bootstrap-table": "^2.8.0",
     "react-dom": "^15.0.0",
     "react-on-rails": "6.3.4",
-    "react-select": "^1.0.0-rc.2"
+    "react-select": "^1.0.0-rc.2",
+    "webpack": "^1.14.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "webpack": "^1.14.0"
+  }
 }

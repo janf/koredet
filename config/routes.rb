@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-  get 'hello_world', to: 'hello_world#index'
   namespace :admin do
 
     resource :system, only: [:show]
@@ -17,9 +16,10 @@ Rails.application.routes.draw do
   end
 
   namespace :apiv1 do
-    get 'auth/gettoken'
-    get 'auth/renewtoken'
-    get 'auth/verifytoken'
+    #get 'auth/gettoken'
+    #get 'auth/renewtoken'
+    #get 'auth/verifytoken' 
+    get 'image/image_sign_url'
     resources :locations
     resources :items
   end

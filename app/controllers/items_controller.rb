@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
       @items = Item.all
-      @item_types = ItemType.all
+      @item_types = ItemType.all.order(:name)
   end
 
   # GET /items/1
@@ -41,7 +41,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render :show, status: :created, location: @item }
+        format.json { render json: @item, status: :created }
         format.js { render json: nil, status: :ok }
       else
         format.html { render :new }

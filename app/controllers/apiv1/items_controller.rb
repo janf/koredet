@@ -4,7 +4,7 @@ class Apiv1::ItemsController < ApplicationController
   # GET /apiv1/items
   # GET /apiv1/items.json
   def index
-    @apiv1_items = Item.all
+    @apiv1_items = Item.all.order(:name)
   end
 
   # GET /apiv1/items/1

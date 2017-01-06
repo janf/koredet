@@ -33,6 +33,7 @@
     "react-bootstrap-table": "^2.8.0",
     "react-dom": "^15.0.0",
     "react-on-rails": "6.3.4",
+    "react-s3-uploader": "^3.3.0",
     "react-select": "^1.0.0-rc.2"
   },
   "devDependencies": {}

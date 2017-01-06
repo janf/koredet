@@ -108,6 +108,7 @@ GEM
       libv8 (~> 5.3)
     minitest (5.9.1)
     multi_json (1.12.1)
+    net-ssh (3.1.1)
     nio4r (1.2.1)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
@@ -221,6 +222,7 @@ DEPENDENCIES
   jquery-ui-rails
   listen (~> 3.0.5)
   mini_racer
+  net-ssh
   pg (~> 0.18)
   puma (~> 3.0)
   pundit
@@ -240,7 +242,7 @@ DEPENDENCIES
   will_paginate (~> 3.1.0)
 
 RUBY VERSION
-   ruby 2.3.0p0
+   ruby 2.3.3p222
 
 BUNDLED WITH
-   1.13.2
+   1.13.7
