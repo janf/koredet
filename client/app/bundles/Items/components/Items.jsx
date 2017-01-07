@@ -37,6 +37,7 @@ export default class Items extends React.Component {
   }
 
   handleEditCell(row, name, value) {
+    console.log(JSON.stringify(row));
     update("/items/", row, this.props.authenticity_token).then(console.log);
   }
 
@@ -77,7 +78,8 @@ export default class Items extends React.Component {
       };
 
       const selectRowProp = {
-        mode: 'checkbox'
+        mode: 'checkbox',
+        showOnlySelected: true
       };
 
       const itemType = this.props.item_types.reduce((obj, {id, name}) => (obj[id] = name, obj), {});
@@ -144,7 +146,7 @@ export default class Items extends React.Component {
       const filtered_data = selected_item_types.length > 0 ? this.state.data.filter(it => selected_item_types.includes(it.item_type_id)) : this.state.data;
 
     	return (
-    	 		<div className="Items col-md-8">
+    	 		<div className="Items col-md-10">
             <h2>Items</h2>
             <Select.Creatable
               name="item-type-select"
@@ -161,15 +163,15 @@ export default class Items extends React.Component {
                     search insertRow deleteRow selectRow={ selectRowProp } 
                     pagination options={ options }>
                <TableHeaderColumn dataField="id" isKey  autoValue dataAlign="center" hidden width="50" dataSort editable={false}>Item Id</TableHeaderColumn>
-               <TableHeaderColumn datafield="image_url" dataFormat={imageFormatter} 
+               <TableHeaderColumn datafield="image_url" width="50"dataFormat={imageFormatter} 
                     customEditor={ { getElement: createImageEditor } }>Image</TableHeaderColumn>
-               <TableHeaderColumn dataField="item_type_id" width="150" dataSort  dataFormat={ this.itemTypeFormatter } 
+               <TableHeaderColumn dataField="item_type_id" width="80" dataSort  dataFormat={ this.itemTypeFormatter } 
                                   filterFormatted dataFormat={ enumFormatter } editable={ { type: 'select', options: { values: this.props.item_types.map(it => it.id) } } }
                 formatExtraData={ itemType } csvHeader='item_type'csvFormat={ this.itemTypeFormatter }>
                Item Type</TableHeaderColumn>
-               <TableHeaderColumn dataField="name" width="150" dataSort >Item Name</TableHeaderColumn>
+               <TableHeaderColumn dataField="name" width="200" dataSort >Item Name</TableHeaderColumn>
                <TableHeaderColumn dataField="description" width="150">Item Description</TableHeaderColumn>
-               <TableHeaderColumn dataField="created_at" width="150" dataFormat={ this.dateFormatter } dataSort editable={false} >Created at</TableHeaderColumn>
+               <TableHeaderColumn dataField="created_at" width="100" dataFormat={ this.dateFormatter } dataSort editable={false} >Created at</TableHeaderColumn>
              </BootstrapTable>
           </div>
   	   );

@@ -15,6 +15,7 @@ const config = {
     'babel-polyfill',
     './app/bundles/HelloWorld/startup/registration',
     './app/bundles/Items/startup/registration',
+    
   ],
 
   output: {

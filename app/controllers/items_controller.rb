@@ -86,6 +86,6 @@ class ItemsController < ApplicationController
       #params.require(:item).permit(:name, :description, :item_type_id).tap do |whitelisted|
       #    whitelisted[:properties] = params[:item][:properties]
       #end
-      params.require(:item).permit!
+      params.require(:item).permit(:name, :description, :item_type_id, :properties, :image_url)
     end
 end

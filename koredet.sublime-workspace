@@ -244,41 +244,7 @@
 	"buffers":
 	[
 		{
-			"file": "/home/janfh/Projects/ReactRailsDemo/app/views/records/index.html.erb",
-			"settings":
-			{
-				"buffer_size": 173,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "app/views/items/index.html.erb",
-			"settings":
-			{
-				"buffer_size": 104,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "client/app/bundles/Items/components/Items.jsx",
-			"settings":
-			{
-				"buffer_size": 3243,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "config/boot.rb",
-			"settings":
-			{
-				"buffer_size": 128,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Procfile.dev",
 			"settings":
 			{
 				"buffer_size": 129,
@@ -287,21 +253,36 @@
 			}
 		},
 		{
-			"file": "client/package.json",
+			"file": "client/app/bundles/Items/components/Items.jsx",
 			"settings":
 			{
-				"buffer_size": 978,
+				"buffer_size": 6844,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "import React from 'react';\n\nexport default class Item extends React.Component {\n\tconstructor(props) {\n    \tsuper(props);\n    \tthis.state = {title: 'Hello',\n    \t\t\t\t  date: 'Today',\n    \t\t\t\t  amount: 1,\n    \t\t\t\t  addrecord: false };\n\n    \tthis.handleTitleChange = this.handleTitleChange.bind(this);\n    \tthis.handleDateChange = this.handleDateChange.bind(this);\n    \tthis.handleAmountChange = this.handleAmountChange.bind(this);\n    \tthis.handleSubmit = this.handleSubmit.bind(this)\n    \tthis.handleExit = this.handleExit.bind(this)\n\t};\n\n\thandleTitleChange(e) {\n\t\tconsole.log(\"Title changed\");\n\t\tthis.setState({ title: e.target.value });\n\t}\n\n\thandleDateChange(e) {\n\t\tconsole.log(\"Date changed -\");\n\t\tthis.setState({ date: e.target.value });\n\t}\n\n\thandleAmountChange(e) {\n\t\tconsole.log(\"Amount changed -\");\n\t\tthis.setState({ amount: e.target.value });\n\t}\n\n\thandleSubmit(e) {\n\t\tconsole.log(\"Pressed submit, button: \" + e.value);\n\t\tconsole.log(\"Should update record\");\n\t\tpayload = { record:  \n\t\t\t\t \t\t{title: this.state.title,\n\t\t\t\t\t\tdate: this.state.date,\n\t\t\t\t\t\tamount: this.state.amount} };\n\t\tthis.props.onEditEvent(\"add\", payload);\t\t\n\t\te.preventDefault();\n\t}\n\n\thandleExit(e) {\n\t\tconsole.log(\"Pressed exit\");\n\t\tconsole.log(\"Should notify parent about event\");\n\t\tthis.props.onEditEvent(\"exit\");\n\t\te.preventDefault();\n\t}\n\n\n\trender() {\n    \t return (\n    \t  \t\t<form className=\"form-inline\"  method=\"post\" onSubmit={this.handleSubmit}>\n     \t\t\t\t<div className=\"form-group\"> \n     \t\t\t\t    <label>\n\t\t\t\t\t    \tTitle:\n\t\t\t\t\t    \t<input type=\"text\" name=\"title\" value={this.state.title} onChange={this.handleTitleChange} />\n\t\t\t\t\t    </label>\n\t\t\t\t\t    <label>\n\t\t\t\t\t    \tDate:\n\t\t\t\t\t    \t<input type=\"text\"  name=\"date\" value={this.state.date} onChange={this.handleDateChange} />\n\t\t\t\t\t    </label>\n\t\t\t\t\t    <label>\n\t\t\t\t\t    \tAmount:\n\t\t\t\t\t    \t<input type=\"text\"  name=\"amount\" value={this.state.amount} onChange={this.handleAmountChange} />\n\t\t\t\t\t    </label>\n\t\t\t\t\t    <input type='hidden' name='authenticity_token' value={this.props.authenticity_token} />\n\t\t\t\t\t    <input type=\"submit\" value=\"Add\" className=\"btn-xs btn-primary\" id=\"submit\"/>\n\t\t\t\t\t    <button id=\"exit\" className=\"btn-xs btn-warning\" onClick={this.handleExit}>Exit</button>\n     \t\t\t\t</div>\n      \t\t\t</form>\n    \t );\n  \t};\n \n  \t\n};\n\n",
-			"file": "client/app/bundles/Items/components/Item.jsx",
-			"file_size": 2281,
-			"file_write_time": 131273358184790438,
+			"file": "Procfile.dev",
 			"settings":
 			{
-				"buffer_size": 2280,
+				"buffer_size": 111,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "client/package.json",
+			"settings":
+			{
+				"buffer_size": 966,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "client/app/bundles/Items/components/Item.jsx",
+			"settings":
+			{
+				"buffer_size": 2281,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -317,19 +298,30 @@
 			}
 		},
 		{
-			"file": "/home/janfh/koredet/koredetmobile/README.md",
-			"settings":
-			{
-				"buffer_size": 42,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "app/assets/javascripts/locations.js",
 			"settings":
 			{
 				"buffer_size": 8738,
 				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "class AccountsController < ApplicationController\n\n\tinclude DataTransfer\n\n\tbefore_action :authenticate_user!\n\tbefore_action :set_account, only: [:show, :edit, :update, :invite_member]\n\t  \n\tdef show\n\tend\n\n\tdef edit\n\t\tauthorize @account\n\tend\n\n\tdef update\n\t\tauthorize @account\n\t    respond_to do |format|\n\t      if @account.update(account_params)\n\t        format.html { redirect_to @account, notice: 'Account was successfully updated.' }\n\t        format.json { render :show, status: :ok, account: @account }\n\t      else\n\t        format.html { render :edit }\n\t        format.json { render json: @account.errors, status: :unprocessable_entity }\n\t      end\n\t    end\n\tend\n\n\tdef invite_member\n\n\t\t@email = params[:email]\n\t\tif @email.length > 0\n\t\t\t\n\t\t\t# puts \"Inviting: \" + @email\n\t\t\t\n\t\t\taccinv = AccountInvitation.new(@email, current_user.email)\n\n\t\t\taccount = @account\n\t\t\t\n\t\t\tif !(accinv.existing_member?(account.id) or accinv.existing_member_invitation?(account.id))\n\t\t\t\taccinv.create_member_invitation(@account)\n\t\t\t\taccinv.send_invitation(new_user_registration_path)\n\t\t\telse\n\t\t\t\tmsg =  'User is already member or invited, inivtation not sent'\n\t\t\tend\t\n\t\telse\n\t\t\tmsg = \"Email must be entered\"\n\t\tend\n\n\t\tredirect_to  @account,  notice: msg \n\tend\n\n\tdef cancel_invitation\n\t\tinv = Invitation.find(params[:invitation_id])\n\t\tinv.status = :cancelled\n\t\tinv.save\n\t\tredirect_to action: \"show\", notice: \"Invitations cancelled\"\n\tend\n\n\n\tdef change_admin_status\n\t\tua = UserAccount.find(params[:ua_id])\n\t\tua.account_admin = !ua.account_admin\n\t\tua.save!\n\t\tredirect_to action: \"show\", notice: \"Admin status for user changed\"\n\tend\n\n\tdef import_data\n\t\t\t\n\tend\n\t\n\tdef export_data\n\t\tsend_data export_all_locations, filename: \"AllInventory.csv\"  \t\t\n\t\t#redirect_to action: \"show\", notice: \"Data exported\"\n\tend\t\n\n\n\tdef admin_destroy\n\t\t# Should be moved to system_controller ? Is here to be restful\n\t    @account = Account.find(params[:id])\n\t    @account.destroy\n\t\trespond_to do |format|\n\t  \t\tformat.html { redirect_to :back, notice: 'Item was successfully destroyed.' }\n\t  \t\tformat.json { head :no_content }\n      \tend\t\n    end\n\n\n\n\tprivate\n\n\t    def set_account\n\t    \t@account = Account.find(current_user.current_account_id)\n\t    \t@user_accounts = UserAccount.all  \n\t    \t@invitations = Invitation.where(invitation_type: :member, status: :sent, account_id: @account.id) \n\t\tend\n\n\t\tdef account_params\n      \t\tparams.require(:account).permit(:account_name)\n    \tend\t\nend\n",
+			"file": "app/controllers/accounts_controller.rb",
+			"file_size": 2431,
+			"file_write_time": 131248438307877210,
+			"settings":
+			{
+				"buffer_size": 2432,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/controllers/hello_world_controller.rb",
+			"settings":
+			{
+				"buffer_size": 119,
 				"line_ending": "Unix"
 			}
 		},
@@ -345,7 +337,7 @@
 			"file": "Gemfile",
 			"settings":
 			{
-				"buffer_size": 2232,
+				"buffer_size": 2259,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -354,7 +346,7 @@
 			"file": "app/assets/stylesheets/application.css.scss",
 			"settings":
 			{
-				"buffer_size": 907,
+				"buffer_size": 936,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -371,7 +363,7 @@
 			"file": "app/controllers/apiv1/items_controller.rb",
 			"settings":
 			{
-				"buffer_size": 1959,
+				"buffer_size": 1972,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -385,19 +377,23 @@
 	"command_palette":
 	{
 		"height": 294.0,
-		"last_filter": "rails",
+		"last_filter": "Snippet: ",
 		"selected_items":
 		[
 			[
-				"rails",
-				"Snippet: render (partial, status)"
+				"Snippet: ",
+				"Snippet: RSpec It Block"
 			],
 			[
-				"Snippet: ",
-				"Snippet: #!/usr/bin/env"
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"rails",
+				"Snippet: render (partial, status)"
 			]
 		],
-		"width": 412.0
+		"width": 377.0
 	},
 	"console":
 	{
@@ -417,43 +413,14 @@
 	},
 	"expanded_folders":
 	[
-		"/home/janfh/koredet/koredetweb",
-		"/home/janfh/koredet/koredetweb/app/assets/config",
-		"/home/janfh/koredet/koredetweb/app/assets/images",
-		"/home/janfh/koredet/koredetweb/app/assets/javascripts",
-		"/home/janfh/koredet/koredetweb/app/assets/javascripts/components",
-		"/home/janfh/koredet/koredetweb/app/assets/stylesheets",
-		"/home/janfh/koredet/koredetweb/app/channels",
-		"/home/janfh/koredet/koredetweb/app/controllers",
-		"/home/janfh/koredet/koredetweb/app/controllers/apiv1",
-		"/home/janfh/koredet/koredetweb/app/views",
-		"/home/janfh/koredet/koredetweb/app/views/apiv1/items",
-		"/home/janfh/koredet/koredetweb/app/views/apiv1/locations",
-		"/home/janfh/koredet/koredetweb/app/views/hello_world",
-		"/home/janfh/koredet/koredetweb/app/views/item_searches",
-		"/home/janfh/koredet/koredetweb/app/views/items",
-		"/home/janfh/koredet/koredetweb/app/views/items/fields",
-		"/home/janfh/koredet/koredetweb/app/views/items/old",
-		"/home/janfh/koredet/koredetweb/app/views/layouts",
-		"/home/janfh/koredet/koredetweb/app/views/locations",
-		"/home/janfh/koredet/koredetweb/app/views/transaction_types",
-		"/home/janfh/koredet/koredetweb/app/views/transactions",
-		"/home/janfh/koredet/koredetweb/app/views/user_profiles",
-		"/home/janfh/koredet/koredetweb/app/views/users",
-		"/home/janfh/koredet/koredetweb/client",
-		"/home/janfh/koredet/koredetweb/client/app/bundles",
-		"/home/janfh/koredet/koredetweb/client/app/bundles/Items",
-		"/home/janfh/koredet/koredetweb/client/app/bundles/Items/components",
-		"/home/janfh/koredet/koredetweb/client/app/lib",
-		"/home/janfh/koredet/koredetweb/client/node_modules",
-		"/home/janfh/koredet/koredetweb/config",
-		"/home/janfh/koredet/koredetweb/db",
-		"/home/janfh/koredet/koredetweb/vendor",
-		"/home/janfh/koredet/koredetweb/vendor/assets",
-		"/home/janfh/koredet/koredetweb/vendor/assets/stylesheets/extensions"
+		"/home/janfh/Projects/koredet/koredetweb",
+		"/home/janfh/Projects/koredet/koredetweb/app",
+		"/home/janfh/Projects/koredet/koredetweb/app/controllers"
 	],
 	"file_history":
 	[
+		"/home/janfh/koredet/koredetmobile/README.md",
+		"/home/janfh/Projects/ReactRailsDemo/app/views/records/index.html.erb",
 		"/home/janfh/koredet/koredetweb/client/webpack.config.js",
 		"/home/janfh/koredet/koredetweb/client/REACT_ON_RAILS_CLIENT_README.md",
 		"/home/janfh/koredet/koredetweb/client/package.json",
@@ -579,13 +546,11 @@
 		"/home/janfh/koredet/koredetweb/app/services/statistics_services.rb",
 		"/home/janfh/Desktop/PGAdmin4",
 		"/home/janfh/koredet/KoredetRN/KoredetRN/android/gradle/wrapper/gradle-wrapper.properties",
-		"/home/janfh/koredet/KoredetRN/KoredetRN/android/settings.gradle",
-		"/home/janfh/koredet/KoredetRN/KoredetRN/android/gradle.properties",
-		"/home/janfh/.bashrc"
+		"/home/janfh/koredet/KoredetRN/KoredetRN/android/settings.gradle"
 	],
 	"find":
 	{
-		"height": 29.0
+		"height": 19.0
 	},
 	"find_in_files":
 	{
@@ -676,44 +641,16 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 8,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/home/janfh/Projects/ReactRailsDemo/app/views/records/index.html.erb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 173,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								42,
-								42
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "app/views/items/index.html.erb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 104,
+						"buffer_size": 129,
 						"regions":
 						{
 						},
@@ -734,24 +671,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 1,
 					"file": "client/app/bundles/Items/components/Items.jsx",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3243,
+						"buffer_size": 6844,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2570,
-								2570
+								1473,
+								1473
 							]
 						],
 						"settings":
@@ -761,19 +698,19 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 469.0,
+						"translation.y": 501.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "config/boot.rb",
-					"semi_transient": true,
+					"buffer": 2,
+					"file": "Procfile.dev",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 128,
+						"buffer_size": 111,
 						"regions":
 						{
 						},
@@ -786,58 +723,30 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Ruby/Ruby.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "Procfile.dev",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 129,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								38,
-								38
-							]
-						],
-						"settings":
-						{
 							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 3,
 					"file": "client/package.json",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 978,
+						"buffer_size": 966,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								900,
-								900
+								0,
+								0
 							]
 						],
 						"settings":
@@ -850,16 +759,16 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 4,
 					"file": "client/app/bundles/Items/components/Item.jsx",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2280,
+						"buffer_size": 2281,
 						"regions":
 						{
 						},
@@ -872,17 +781,17 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 714.0,
+						"translation.y": 770.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 5,
 					"file": "config/initializers/npm.rb",
 					"semi_transient": false,
 					"settings":
@@ -907,39 +816,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "/home/janfh/koredet/koredetmobile/README.md",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 42,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								42,
-								42
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 13,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
+					"buffer": 6,
 					"file": "app/assets/javascripts/locations.js",
 					"semi_transient": false,
 					"settings":
@@ -961,14 +842,71 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4199.0,
+						"translation.y": 2069.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 7,
+					"file": "app/controllers/accounts_controller.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2432,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								979,
+								979
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 291.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/controllers/hello_world_controller.rb",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 119,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
 					"file": ".gitignore",
 					"semi_transient": false,
 					"settings":
@@ -996,20 +934,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 10,
 					"file": "Gemfile",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2232,
+						"buffer_size": 2259,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								528,
-								528
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1017,27 +955,27 @@
 							"syntax": "Packages/Ruby/Ruby.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1173.0,
+						"translation.y": 1248.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 11,
 					"file": "app/assets/stylesheets/application.css.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 907,
+						"buffer_size": 936,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								828,
-								828
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1048,11 +986,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 12,
 					"file": "app/controllers/apiv1/auth_controller.rb",
 					"semi_transient": false,
 					"settings":
@@ -1076,24 +1014,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 13,
 					"file": "app/controllers/apiv1/items_controller.rb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1959,
+						"buffer_size": 1972,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1931,
-								1931
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1103,10 +1041,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 551.0,
+						"translation.y": 651.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 11,
 					"type": "text"
 				}
 			]
@@ -1114,7 +1052,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 23.0
+		"height": 19.0
 	},
 	"input":
 	{
@@ -1151,7 +1089,7 @@
 	"project": "koredet.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 34.0
 	},
 	"save_all_on_build": true,
 	"select_file":
