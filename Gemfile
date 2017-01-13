@@ -62,7 +62,7 @@ gem 'chartkick'
 
 gem "react_on_rails", "~> 6"
 
-#gem 'fog'
+gem 'fog'
 
 gem 'net-ssh'
 

@@ -18,6 +18,7 @@ export default class Items extends React.Component {
     this.handleInsertedRow = this.handleInsertedRow.bind(this);
     this.handleEditCell = this.handleEditCell.bind(this);
     this.handleDeleteRow = this.handleDeleteRow.bind(this);
+    this.imageFormatter = this.imageFormatter.bind(this);
     //this.handleEditEvent = this.handleEditEvent.bind(this);
 	};
 
@@ -47,17 +48,19 @@ export default class Items extends React.Component {
   }
   
   dateFormatter(cell, row){
-      //return cell;
       return moment(cell).format("YYYY-MM-DD");
   }
 
   itemTypeFormatter(cell, row){
-      //return cell;
       const id = parseInt(cell);
       return this.props.item_types.filter(it => it.id === id)[0].name;
   }
 
-
+  imageFormatter(cell, row){
+    if(cell == null) 
+      cell = "/assets/add_picture.png";
+    return (<img style={{width:25}} src={cell}/>)
+  }
 
  
 	render() {
@@ -88,11 +91,7 @@ export default class Items extends React.Component {
         return enumObject[cell];
       }
 
-      function imageFormatter(cell, row){
-        if(cell == null) 
-          cell = "/assets/add_picture.png";
-        return (<img style={{width:25}} src={cell}/>)
-      }
+   
 
       const createImageEditor = (onUpdate, props) => (<ImageEditor onUpdate={ onUpdate } {...props}/>);
 
@@ -163,7 +162,7 @@ export default class Items extends React.Component {
                     search insertRow deleteRow selectRow={ selectRowProp } 
                     pagination options={ options }>
                <TableHeaderColumn dataField="id" isKey  autoValue dataAlign="center" hidden width="50" dataSort editable={false}>Item Id</TableHeaderColumn>
-               <TableHeaderColumn datafield="image_url" width="50"dataFormat={imageFormatter} 
+               <TableHeaderColumn dataField="image_url" width="50" dataFormat={this.imageFormatter} 
                     customEditor={ { getElement: createImageEditor } }>Image</TableHeaderColumn>
                <TableHeaderColumn dataField="item_type_id" width="80" dataSort  dataFormat={ this.itemTypeFormatter } 
                                   filterFormatted dataFormat={ enumFormatter } editable={ { type: 'select', options: { values: this.props.item_types.map(it => it.id) } } }
