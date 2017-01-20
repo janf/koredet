@@ -1,12 +1,15 @@
 //import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 
 import React from 'react';
-import Item  from './Item';
+//import Item  from './Item';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import Select from 'react-select';
 import moment from 'moment';
 import { post, update, delete_ } from '../../../lib/railsclient';
 import ImageEditor from './ImageEditor'
+
+
+const createImageEditor = (onUpdate, props) => (<ImageEditor onUpdate={ onUpdate } {...props}/>);
 
 export default class Items extends React.Component {
 
@@ -38,7 +41,7 @@ export default class Items extends React.Component {
   }
 
   handleEditCell(row, name, value) {
-    console.log(JSON.stringify(row));
+    console.log("HandleEditCell " + JSON.stringify(row));
     update("/items/", row, this.props.authenticity_token).then(console.log);
   }
 
@@ -60,9 +63,10 @@ export default class Items extends React.Component {
     if(cell == null) 
       cell = "/assets/add_picture.png";
     return (<img style={{width:25}} src={cell}/>)
-  }
+  };
 
- 
+
+
 	render() {
 
       let editpane;
@@ -93,7 +97,7 @@ export default class Items extends React.Component {
 
    
 
-      const createImageEditor = (onUpdate, props) => (<ImageEditor onUpdate={ onUpdate } {...props}/>);
+  
 
       const options = {
         clearSearch: true,

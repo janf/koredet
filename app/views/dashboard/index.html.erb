@@ -31,6 +31,8 @@
 	<% end %>	
 
 
+	<%= link_to "New Transaction" , transactions_path,  class: "btn btn-primary",:style=>'color:#FFFFFF;'%>
+
 	<% @transaction_types.each do |t| %>
     	<%= link_to t.name, new_cart_path(:transaction_type_id => t.id), class: "btn btn-primary",:style=>'color:#FFFFFF;'%>
 	<% end %>

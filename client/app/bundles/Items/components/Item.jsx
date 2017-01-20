@@ -5,13 +5,16 @@ export default class Item extends React.Component {
 	constructor(props) {
     	super(props);
     	this.state = {title: 'Hello',
+    				  image_url: "",
     				  date: 'Today',
     				  amount: 1,
-    				  addrecord: false };
+    				  addrecord: false
+    				  };
 
     	this.handleTitleChange = this.handleTitleChange.bind(this);
     	this.handleDateChange = this.handleDateChange.bind(this);
     	this.handleAmountChange = this.handleAmountChange.bind(this);
+    	this.handleImageUrlChange = this.handleImageUrlChange.bind(this);
     	this.handleSubmit = this.handleSubmit.bind(this)
     	this.handleExit = this.handleExit.bind(this)
 	};
@@ -20,6 +23,12 @@ export default class Item extends React.Component {
 		console.log("Title changed");
 		this.setState({ title: e.target.value });
 	}
+
+	handleImageUrlChange(e) {
+		console.log("Image url changed");
+		this.setState({ title: e.target.value });
+	}
+
 
 	handleDateChange(e) {
 		console.log("Date changed -");
@@ -37,7 +46,8 @@ export default class Item extends React.Component {
 		payload = { record:  
 				 		{title: this.state.title,
 						date: this.state.date,
-						amount: this.state.amount} };
+						amount: this.state.amount,
+						image_url: this.state.image_url} };
 		this.props.onEditEvent("add", payload);		
 		e.preventDefault();
 	}

@@ -16,7 +16,6 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
-//= require jquery-ui/autocomplete
 //= require autocomplete-rails
 //= require chartkick
 //= require jquery.fancytree-all

@@ -15,6 +15,7 @@ const config = {
     'babel-polyfill',
     './app/bundles/HelloWorld/startup/registration',
     './app/bundles/Items/startup/registration',
+    './app/bundles/Transactions/startup/registration',
     
   ],
 
@@ -29,6 +30,9 @@ const config = {
       react: path.resolve('./node_modules/react'),
       'react-dom': path.resolve('./node_modules/react-dom'),
     },
+    modulesDirectories: [
+         'node_modules'
+    ]
   },
   plugins: [
     new webpack.DefinePlugin({
