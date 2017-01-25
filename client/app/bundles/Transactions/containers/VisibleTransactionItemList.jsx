@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { toggleTransactionItem } from '../actions'
+import { toggleTransactionItem, updateTransactionItem, deleteTransactionItems } from '../actions'
 import TransactionItemList from '../components/TransactionItemList'
 
 const getVisibleTransactionItems = (TransactionItems, filter) => {
@@ -23,6 +23,15 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onTransactionItemClick: (id) => {
       dispatch(toggleTransactionItem(id))
+    },
+    onTransactionInsert: (row) => {
+      dispatch(addTransactionItem(row.item_name, row.qty))
+    },
+    onTransactionDelete: (ids) => {
+      dispatch(deleteTransactionItems(ids))
+    },
+    onTransactionUpdate: (row) => {
+      dispatch(updateTransactionItem(row))
     }
   }
 }

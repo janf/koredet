@@ -1,7 +1,8 @@
 import React, { PropTypes, Component } from 'react'
 import VoiceRecognition from './VoiceRecognition'
 import { connect } from 'react-redux'
-import { addTransactionItem } from '../actions'
+import { addTransactionItem} from '../actions'
+import { addTransactionToDB, testAction   } from '../actions'
 import { parse_transaction_text } from '../../../lib/parsetext'
 
 
@@ -27,9 +28,16 @@ class Dictaphone extends Component {
     let parsed_text;
     parsed_text = parse_transaction_text(result);
     console.log("Parsed text: " + JSON.stringify(parsed_text));
-    var action = addTransactionItem(parsed_text["item_name"], parsed_text["qty"]);
+    //var action = addTransactionItem(parsed_text["item_name"], parsed_text["qty"]);
+    //var action = addTransactionToDB(parsed_text["item_name"], parsed_text["qty"]);
+
+    var action = testAction(parsed_text["item_name"], parsed_text["qty"]);
+    
+    //var action = addTransactionToDB(parsed_text["item_name"], parsed_text["qty"]);
+
     console.log("action: " + JSON.stringify(action));
     this.props.dispatch(action);
+
 
 
   }

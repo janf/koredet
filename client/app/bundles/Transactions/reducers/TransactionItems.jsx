@@ -5,8 +5,9 @@ const TransactionItem = (state = {}, action) => {
         id: action.id,
         item_name: action.item_name,
         qty: action.qty,
-        completed: false
+        created_at: action.created_at
       }
+
     case 'TOGGLE_TransactionItem':
       if (state.id !== action.id) {
         return state
@@ -28,6 +29,13 @@ const TransactionItems = (state = [], action) => {
         ...state,
         TransactionItem(undefined, action)
       ]
+    case 'UPDATE_TransactionItem':
+      return state.map(row => row.id === action.row.id ? {...row, ...action.row} : row);
+    
+
+    case 'DELETE_TransactionItems':
+      return state.filter(({ id }) => !action.ids.includes(id));
+      
     case 'TOGGLE_TransactionItem':
       return state.map(t =>
         TransactionItem(t, action)
@@ -37,4 +45,4 @@ const TransactionItems = (state = [], action) => {
   }
 }
 
-export default TransactionItems
+export default TransactionItems;

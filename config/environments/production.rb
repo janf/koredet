@@ -58,7 +58,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "koredetweb_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: 'koredet.herokuapp.com', post: 443 }
+  config.action_mailer.default_url_options = { host: ENV['mailer_url]', post: 443 }
   config.action_mailer.default_options = { from: ENV["gmail_username"] }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {

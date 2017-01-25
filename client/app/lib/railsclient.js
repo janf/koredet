@@ -1,8 +1,10 @@
 /** @flow */
-export function post(endpoint, payload) {
+
+
+export function post(endpoint, payload, token) {
     return fetch(endpoint, {
         method: 'POST',
-        body: JSON.stringify(payload),
+        body: JSON.stringify({...payload, authenticity_token: token}),
         credentials: 'same-origin',
         headers: {
             'Content-Type': 'application/json',

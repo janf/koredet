@@ -4,21 +4,34 @@ import { addTransactionItem } from '../actions'
 
 
 let AddTransactionItem = ({ dispatch }) => {
-  let input
+  let item_name, qty
+
 
   return (
     <div>
       <form onSubmit={e => {
         e.preventDefault()
-        if (!input.value.trim()) {
+        if (!item_name.value.trim()) {
           return
         }
-        dispatch(addTransactionItem(input.value))
-        input.value = ''
+        if(qty.value.length == 0) {
+            qty.value = 1;
+        }
+        dispatch(addTransactionItem(item_name.value, qty.value))
+        item_name.value = ''
+        qty.value = ''
       }}>
-        <input ref={node => {
-          input = node
+        <input placeholder="Item name"
+              ref={node => {
+          item_name = node
         }} />
+
+        <input  placeholder="Qty"
+        ref={node => {
+          qty = node
+        }} />
+
+
 
         <button type="submit">
           Add TransactionItem

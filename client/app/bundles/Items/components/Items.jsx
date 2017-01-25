@@ -31,10 +31,10 @@ export default class Items extends React.Component {
 
   handleInsertedRow(row) {
      console.log("Inserting ", row );
-     const payload = {item: {...row}, authenticity_token: this.props.authenticity_token};
+     const payload = {item: {...row} };
      delete payload.item.id;
      console.log("Payload", payload);
-     post("/items", payload).then(ret => this.setState({
+     post("/items", payload, this.props.authenticity_token).then(ret => this.setState({
       ...this.state,
       data: [].concat(this.state.data, [ret])
      }));

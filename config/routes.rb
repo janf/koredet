@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     get 'image/image_sign_url'
     resources :locations
     resources :items
+    resources :transactions
   end
 
   resource :user_profiles, only: [:edit, :show, :update] do

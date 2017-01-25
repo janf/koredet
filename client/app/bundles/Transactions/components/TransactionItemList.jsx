@@ -2,6 +2,8 @@ import React, { PropTypes } from 'react'
 import TransactionItem from './TransactionItem'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 
+
+
 const options = {
         clearSearch: true,
 
@@ -24,6 +26,7 @@ const options = {
 
         //afterInsertRow: this.handleInsertedRow,
         //afterDeleteRow: this.handleDeleteRow,
+        // afterDeleteRow: this.handleDeletedRow
       };
 
 
@@ -37,11 +40,11 @@ const options = {
         showOnlySelected: true
       };
 
-const TransactionItemList = ({ TransactionItems, onTransactionItemClick }) => (
+const TransactionItemList = ({ TransactionItems, onTransactionItemClick, onTransactionInsert, onTransactionUpdate, onTransactionDelete }) => (
   <BootstrapTable data={TransactionItems} 
-                    exportCSV striped cellEdit={ cellEditProp } hover condensed 
-                    search insertRow deleteRow selectRow={ selectRowProp } 
-                    pagination options={ options }>
+                    exportCSV striped cellEdit={{ ...cellEditProp, afterSaveCell: onTransactionUpdate }} hover condensed 
+                    search  deleteRow selectRow={ selectRowProp } 
+                    pagination options={{ ...options, afterDeleteRow: onTransactionDelete   }}>
                <TableHeaderColumn dataField="id" isKey  autoValue dataAlign="center" hidden width="50" dataSort editable={false}>Trans Id</TableHeaderColumn>
                <TableHeaderColumn dataField="item_name" width="100">Item Name</TableHeaderColumn>
                 <TableHeaderColumn dataField="qty" width="100">Qty</TableHeaderColumn>
@@ -52,7 +55,6 @@ const TransactionItemList = ({ TransactionItems, onTransactionItemClick }) => (
 TransactionItemList.propTypes= {
   TransactionItems: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
-    completed: PropTypes.bool.isRequired,
     item_name: PropTypes.string.isRequired
   }).isRequired).isRequired,
   onTransactionItemClick: PropTypes.func.isRequired
