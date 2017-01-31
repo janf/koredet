@@ -42,7 +42,7 @@ export default class Items extends React.Component {
 
   handleEditCell(row, name, value) {
     console.log("HandleEditCell " + JSON.stringify(row));
-    update("/items/", row, this.props.authenticity_token).then(console.log);
+    update("/items/", row.id, row, this.props.authenticity_token).then(console.log);
   }
 
   handleDeleteRow(rowKeys) {

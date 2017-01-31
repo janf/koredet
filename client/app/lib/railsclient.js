@@ -17,8 +17,8 @@ export function post(endpoint, payload, token) {
     });
 }
 
-export function update(endpoint, payload, token) {
-    return fetch(endpoint + payload.id, {
+export function update(endpoint, id, payload, token) {
+    return fetch(endpoint + id, {
         method: 'PUT',
         body: JSON.stringify({...payload, authenticity_token: token}),
         credentials: 'same-origin',

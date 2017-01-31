@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { toggleTransactionItem, updateTransactionItem, deleteTransactionItems } from '../actions'
+import { toggleTransactionItem, updateTransactionItemAsync, deleteTransactionItems } from '../actions'
 import TransactionItemList from '../components/TransactionItemList'
 
 const getVisibleTransactionItems = (TransactionItems, filter) => {
@@ -30,8 +30,8 @@ const mapDispatchToProps = (dispatch) => {
     onTransactionDelete: (ids) => {
       dispatch(deleteTransactionItems(ids))
     },
-    onTransactionUpdate: (row) => {
-      dispatch(updateTransactionItem(row))
+    onTransactionUpdate: (row,cellName, cellValue) => {
+      dispatch(updateTransactionItemAsync(row, cellName, cellValue))
     }
   }
 }

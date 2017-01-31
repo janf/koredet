@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react'
 import VoiceRecognition from './VoiceRecognition'
 import { connect } from 'react-redux'
 import { addTransactionItem} from '../actions'
-import { addTransactionToDB, testAction   } from '../actions'
+import { addTransactionToDB, addTransactionItemAsync   } from '../actions'
 import { parse_transaction_text } from '../../../lib/parsetext'
 
 
@@ -31,7 +31,7 @@ class Dictaphone extends Component {
     //var action = addTransactionItem(parsed_text["item_name"], parsed_text["qty"]);
     //var action = addTransactionToDB(parsed_text["item_name"], parsed_text["qty"]);
 
-    var action = testAction(parsed_text["item_name"], parsed_text["qty"]);
+    var action = addTransactionItemAsync(parsed_text["item_name"], parsed_text["qty"]);
     
     //var action = addTransactionToDB(parsed_text["item_name"], parsed_text["qty"]);
 

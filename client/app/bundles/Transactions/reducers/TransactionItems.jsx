@@ -1,6 +1,8 @@
 const TransactionItem = (state = {}, action) => {
+
   switch (action.type) {
     case 'ADD_TransactionItem':
+      console.log("ADD_TransactionItem: " + JSON.stringify(action));
       return {
         id: action.id,
         item_name: action.item_name,
@@ -30,7 +32,7 @@ const TransactionItems = (state = [], action) => {
         TransactionItem(undefined, action)
       ]
     case 'UPDATE_TransactionItem':
-      return state.map(row => row.id === action.row.id ? {...row, ...action.row} : row);
+      return state.map(row => row.id === action.id ? {...row, ...action} : row);
     
 
     case 'DELETE_TransactionItems':

@@ -5,6 +5,10 @@ import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 
 
 const options = {
+
+        defaultSortName: 'id',
+        defaultSortOrder: 'desc',
+
         clearSearch: true,
 
         page: 1,  // which page you want to show as default

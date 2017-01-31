@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addTransactionItem } from '../actions'
+import { addTransactionItem, addTransactionItemAsync } from '../actions'
 
 
 let AddTransactionItem = ({ dispatch }) => {
@@ -17,7 +17,7 @@ let AddTransactionItem = ({ dispatch }) => {
         if(qty.value.length == 0) {
             qty.value = 1;
         }
-        dispatch(addTransactionItem(item_name.value, qty.value))
+        dispatch(addTransactionItemAsync(item_name.value, qty.value))
         item_name.value = ''
         qty.value = ''
       }}>

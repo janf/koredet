@@ -44,9 +44,8 @@ class Apiv1::TransactionsController < ApplicationController
         item.item_type_id  = transaction_params[:item_type_id]
         item.save
       end
-
-      
     end
+
 
     transaction_params_new = transaction_params.except(:item_name, :item_type_id)
     @transaction = Transaction.new(transaction_params_new)
@@ -67,15 +66,54 @@ class Apiv1::TransactionsController < ApplicationController
   # PATCH/PUT /apiv1/transactions/1
   # PATCH/PUT /apiv1/transactions/1.json
   def update
-    respond_to do |format|
-      if @transaction.update(transaction_params)
-        format.html { redirect_to @transaction, notice: 'Transaction was successfully updated.' }
-        format.json { render :show, status: :ok, transaction: @transaction }
+    puts "Params: " + transaction_params.to_yaml
+  
+
+    if transaction_params[:item_name].present? then  
+      #see if item with name exists
+      @item = Item.where("lower(name) = ?", transaction_params[:item_name].downcase).first
+
+      check_for_delete_item = false
+
+      if !@item.present? then 
+        #No existing item with the changed name, update item name
+        @item = Item.find(@transaction.items_id)
+        @item.name = transaction_params[:item_name]
+        @item.save
       else
-        format.html { render :edit }
-        format.json { render json: @transaction.errors, status: :unprocessable_entity }
+        check_for_delete_item = true
+      end
+    end  
+
+    @transaction = Transaction.find(params[:id])
+    transaction_params_new = transaction_params.except(:item_name, :item_type_id)
+
+    old_item_id = @transaction.items_id
+
+    if @item.present? then
+      #existing item found, change item id
+      transaction_params_new[:items_id] = @item.id
+    end
+
+    respond_to do |format|
+      if @transaction.update(transaction_params_new)
+
+        #delete old item if not used in transactions 
+        if check_for_delete_item then
+          item_in_use = Transaction.where(items_id: old_item_id).exists?
+          if !item_in_use then
+            Item.destroy(old_item_id)
+          end
+        end
+
+    #    format.html { redirect_to @transaction, notice: 'Transaction was successfully updated.' }
+        format.json { render :show, status: :ok, transaction: @transaction }
+    #  else
+    #    format.html { render :edit }
+    #    format.json { render json: @transaction.errors, status: :unprocessable_entity }
       end
     end
+    #format.json { render :params, status: :ok, transaction: @transaction }
   end
 
   # DELETE /apiv1/transactions/1
@@ -96,6 +134,6 @@ class Apiv1::TransactionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def transaction_params
-        params.require(:transaction).permit(:items_id, :item_name, :item_type_id, :qty)
+        params.require(:transaction).permit(:id, :items_id, :item_name, :item_type_id, :qty)
     end
 end
